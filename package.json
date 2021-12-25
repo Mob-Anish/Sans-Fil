@@ -1,0 +1,8 @@
+{
+  "name": "sansfil",
+  "version": "1.0.0",
+  "description": "wireless",
+  "main": "index.js",
+  "author": "Anish Manandhar",
+  "license": "MIT"
+}
