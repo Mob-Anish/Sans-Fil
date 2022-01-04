@@ -1,0 +1,21 @@
+.content {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.collapsed .sidebar .title h1 {
+  display: none;
+}
+
+.collapsed .sidebar {
+  width: 9.5rem !important;
+  transition: width 0.3s ease-out;
+}
+
+.collapsed .dashboard-container {
+  width: calc(100% - 9.5rem) !important;
+}
+
+.collapsed .sidebar .menu-bar li h2 {
+  display: none;
+}
