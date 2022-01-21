@@ -1,5 +1,5 @@
 // import axios from 'axios';
-import imageOne from "../../Assets/img/login-illus.png";
+import imageOne from "../../Assets/img/image1.png";
 // import imageBg from "../../Assets/img/bg1.jpg";
 import bulb from "../../Assets/img/bulb.png";
 import loginIllus from "../../Assets/img/loginIllus-1.png";
@@ -7,11 +7,7 @@ import loginIllus from "../../Assets/img/loginIllus-1.png";
 import injectSheet from "react-jss";
 
 const styles = {
-  login: {
-    // background: `url(${imageBg})`,
-    // backgroundRepeat: "no-repeat",
-    // backgroundSize: "65% 100%",
-    // backgroundPosition: "left",
+  signup: {
     height: "100vh",
     display: "flex",
     justifyContent: "center",
@@ -24,7 +20,7 @@ const styles = {
       backgroundColor: "white",
       boxShadow:
         "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
-      "& .login-content": {
+      "& .signup-content": {
         padding: "6rem 0 5rem 25rem",
         width: "60%",
         position: "relative",
@@ -38,8 +34,14 @@ const styles = {
       },
       "& form": {
         marginTop: "6rem",
-        display: "flex",
-        flexDirection: "column",
+        "& .input-field": {
+          display: "flex",
+          flexDirection: "column",
+
+          "&:not(last-child)": {
+            marginBottom: "3rem",
+          },
+        },
         "& label": {
           fontSize: "2.5rem",
         },
@@ -51,15 +53,12 @@ const styles = {
           border: "none",
           borderBottom: "1px solid #000000",
           fontSize: "2rem",
-          "&.email": {
-            marginBottom: "3rem",
-          },
           "&:focus": {
             outline: "none",
           },
         },
         "& button": {
-          marginTop: "5rem",
+          marginTop: "3rem",
           width: "30%",
           color: "#ffffff",
           cursor: "pointer",
@@ -72,22 +71,22 @@ const styles = {
           fontFamily: "Quicksand",
         },
       },
-      // "& .login-illustration": {
-      //   position: "absolute",
-      //   bottom: "12rem",
-      //   "& .img-holder": {
-      //     height: "25rem",
-      //     width: "25rem",
-      //     "& .bg-stretch": {
-      //       background: `url(${loginIllus})`,
-      //       height: "100%",
-      //       width: "100%",
-      //       backgroundSize: "cover",
-      //       backgroundRepeat: "no-repeat",
-      //       backgroundPosition: "center",
-      //     },
-      //   },
-      // },
+      "& .signup-illustration": {
+        position: "absolute",
+        bottom: "12rem",
+        "& .img-holder": {
+          height: "25rem",
+          width: "25rem",
+          "& .bg-stretch": {
+            background: `url(${loginIllus})`,
+            height: "100%",
+            width: "100%",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          },
+        },
+      },
       "& .title": {
         lineHeight: "2.1rem",
       },
@@ -123,11 +122,11 @@ const styles = {
   },
 };
 
-const Login = ({ classes }) => {
+const Signup = ({ classes }) => {
   return (
-    <div className={classes.login}>
+    <div className={classes.signup}>
       <div className="content-holder">
-        <div className="login-content">
+        <div className="signup-content">
           <img src={bulb} alt="bulb img" />
           <div className="logo-image">
             <h1>Sans Fil</h1>
@@ -137,30 +136,44 @@ const Login = ({ classes }) => {
             <h1>Smart Home</h1>
           </div>
           <form>
-            <label for="email">Email Address:</label>
-            <input
-              type={"text"}
-              name="email"
-              className="email"
-              placeholder="Enter your email . . ."
-              required
-            />
-            <label for="password">Password:</label>
-            <input
-              type={"password"}
-              name="password"
-              className="password"
-              placeholder="Password"
-              required
-            />
-            <button type="submit">Login</button>
+            <div className="input-field">
+              <label for="name">Name:</label>
+              <input
+                type={"text"}
+                name="name"
+                className="name"
+                placeholder="Enter your name . . ."
+                required
+              />
+            </div>
+            <div className="input-field">
+              <label for="email">Email Address:</label>
+              <input
+                type={"text"}
+                name="email"
+                className="email"
+                placeholder="Enter your email . . ."
+                required
+              />
+            </div>
+            <div className="input-field">
+              <label for="password">Password:</label>
+              <input
+                type={"password"}
+                name="password"
+                className="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <button type="submit">Signup</button>
           </form>
         </div>
-        {/* <div className="login-illustration">
+        <div className="signup-illustration">
           <div className="img-holder">
             <div className="bg-stretch"></div>
           </div>
-        </div> */}
+        </div>
         <div className="image-content">
           <div className="img-holder">
             <div className="bg-stretch"></div>
@@ -171,4 +184,4 @@ const Login = ({ classes }) => {
   );
 };
 
-export default injectSheet(styles)(Login);
+export default injectSheet(styles)(Signup);
