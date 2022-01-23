@@ -1,18 +1,15 @@
 const mongoose = require("mongoose");
 
+
 // Schema
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "A user must have a name"],
-    trim: true,
+    required: true,
   },
   email: {
     type: String,
-    requires: [true, "Please provide your email"],
-    unique: true,
-    lowercase: true,
-    validate: [validator.isEmail, "Please provide a valid email"],
+    required: true,
   },
   role: {
     type: String,
@@ -21,9 +18,12 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, "Please provide a password"],
-    minlength: [8, "Length of character is small"],
     select: false,
+    required: true,
+  },
+  accessToken: {
+    type: String,
+    default: "03DE11F42DF93724B745A5F3F6DB001A",
   },
 });
 

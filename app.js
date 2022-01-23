@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 // const hpp = require('hpp');
+const passport = require("passport");
 
 const userRouter = require("./routes/userRoutes");
 
@@ -42,6 +43,12 @@ app.use((req, res, next) => {
   console.log(req.cookies);
   next();
 });
+
+// Passport Middleware
+app.use(passport.initialize());
+
+// Passport Config
+require("./config/passport")(passport);
 
 //-------- Api Routes --------//
 app.use("/api/v1/users", userRouter);

@@ -41,7 +41,7 @@ const server = app.listen(port, () => {
 // Handling Unhandled rejected promise
 process.on("unhandledRejection", (err) => {
   console.log("UNCAUGHT EXCEPTION!! Shutting down.....");
-  console.log(err.name, err.message);
+  console.log(err);
   server.close(() => {
     process.exit(1); // crashing application
   });
