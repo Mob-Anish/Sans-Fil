@@ -1,6 +1,7 @@
 const jwt = require("../utils/jsonWebToken");
 const User = require("../models/userModel");
 const validateRegisterInput = require("../utils/validation/registerValidate");
+const validateLoginInput = require("../utils/validation/loginValidate");
 
 // Create User Account.
 exports.signup = async (req, res) => {
@@ -39,13 +40,32 @@ exports.signup = async (req, res) => {
   });
 };
 
-exports.login = (req, res, next) => {
-  const token = jwt.signToken(1235);
+// Login user account
+exports.login = async (req, res, next) => {
+  // Input validation
+  const { errors, isValid } = validateLoginInput(req.body);
 
-  console.log(req.body);
+  if (!isValid) return res.status.json(errors);
+
+  const existingUser = await User.findOne({
+    email: req.body.email,
+    password: req.body.password,
+  });
+
+  console.log(existingUser);
+
+  // If user credentials invalid
+  if (!existingUser) {
+    return res.status(401).json({
+      message: "Your email or password is incorrect! 😅",
+    });
+  }
+
+  // Token
+  const token = jwt.signToken(existingUser._id);
+
   res.status(200).json({
     status: "success",
-    message: "login",
     token: `Bearer ${token}`,
   });
 };
