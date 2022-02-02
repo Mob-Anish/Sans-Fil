@@ -15,6 +15,10 @@ const validateLoginInput = (data) => {
     errors.email = "Your email is empty 😅";
   }
 
+  if (!validator.isLength(data.password, { min: 8, max: 30 })) {
+    errors.password = "Password must be atleast 8 characters😅";
+  }
+
   if (validator.isEmpty(data.password)) {
     errors.password = "Password field is required 😅";
   }

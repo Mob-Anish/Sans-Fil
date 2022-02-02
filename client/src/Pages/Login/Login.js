@@ -1,10 +1,10 @@
-// import axios from 'axios';
+import { useState } from "react";
+import axios from "axios";
 import imageOne from "../../Assets/img/login-illus.png";
 // import imageBg from "../../Assets/img/bg1.jpg";
 import bulb from "../../Assets/img/bulb.png";
-import loginIllus from "../../Assets/img/loginIllus-1.png";
-// import loginSvg from "../../Assets/svg/wave.svg";
 import injectSheet from "react-jss";
+import { Link } from "react-router-dom";
 
 const styles = {
   login: {
@@ -38,8 +38,20 @@ const styles = {
       },
       "& form": {
         marginTop: "6rem",
-        display: "flex",
-        flexDirection: "column",
+        "& .input-field": {
+          display: "flex",
+          flexDirection: "column",
+
+          "&:not(last-child)": {
+            marginBottom: "1.5rem",
+          },
+
+          "& .error-field": {
+            fontSize: "1.5rem",
+            height: "1.5rem",
+            color: "red",
+          },
+        },
         "& label": {
           fontSize: "2.5rem",
         },
@@ -51,15 +63,11 @@ const styles = {
           border: "none",
           borderBottom: "1px solid #000000",
           fontSize: "2rem",
-          "&.email": {
-            marginBottom: "3rem",
-          },
           "&:focus": {
             outline: "none",
           },
         },
         "& button": {
-          marginTop: "5rem",
           width: "30%",
           color: "#ffffff",
           cursor: "pointer",
@@ -124,6 +132,28 @@ const styles = {
 };
 
 const Login = ({ classes }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const user = {
+      email,
+      password,
+    };
+
+    axios
+      .post("http://localhost:4000/api/v1/users/login", user)
+      .then((res) => console.log(res.data))
+      .catch((err) => {
+        setError(err.response.data);
+        console.log(err.response.data);
+        console.log(errors);
+      });
+  };
+
   return (
     <div className={classes.login}>
       <div className="content-holder">
@@ -136,24 +166,59 @@ const Login = ({ classes }) => {
             <span>Welcome to</span>
             <h1>Smart Home</h1>
           </div>
-          <form>
-            <label for="email">Email Address:</label>
-            <input
-              type={"text"}
-              name="email"
-              className="email"
-              placeholder="Enter your email . . ."
-              required
-            />
-            <label for="password">Password:</label>
-            <input
-              type={"password"}
-              name="password"
-              className="password"
-              placeholder="Password"
-              required
-            />
-            <button type="submit">Login</button>
+          <form onSubmit={handleSubmit}>
+            <div className="input-field">
+              <label htmlFor="email">Email Address:</label>
+              <input
+                type={"text"}
+                name="email"
+                className="email"
+                placeholder="Enter your email . . ."
+                autoFocus
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <div className="error-field">
+                {errors.email ? errors.email : ""}
+              </div>
+            </div>
+            <div className="input-field">
+              <label htmlFor="password">Password:</label>
+              <input
+                type={"password"}
+                name="password"
+                className="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="error-field">
+                {errors.password ? errors.password : ""}
+              </div>
+            </div>
+            <div
+              className="submit-field"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <button type="submit">Login</button>
+              <span>
+                Don't have an account ?{" "}
+                <Link to="/signup" style={{ textDecoration: "none" }}>
+                  <b
+                    style={{
+                      color: "red",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Signup
+                  </b>
+                </Link>
+              </span>
+            </div>
           </form>
         </div>
         {/* <div className="login-illustration">

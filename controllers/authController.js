@@ -42,32 +42,47 @@ exports.signup = async (req, res) => {
 
 // Login user account
 exports.login = async (req, res, next) => {
+  const { email, password } = req.body;
+
   // Input validation
   const { errors, isValid } = validateLoginInput(req.body);
 
-  if (!isValid) return res.status.json(errors);
+  if (!isValid) return res.status(400).json(errors);
 
+  // Check the user credentials
   const existingUser = await User.findOne({
-    email: req.body.email,
-    password: req.body.password,
-  });
-
-  console.log(existingUser);
+    email,
+  }).select("+password");
 
   // If user credentials invalid
   if (!existingUser) {
-    return res.status(401).json({
-      message: "Your email or password is incorrect! 😅",
+    errors.email = "Umm there is no such user with that email.😅";
+    return res.status(401).json(errors);
+  }
+
+  // If password matches
+  if (password === existingUser.password) {
+    // Hiding password
+    existingUser.password = undefined;
+
+    // Token
+    const token = jwt.signToken(existingUser._id);
+
+    return res.status(200).json({
+      status: "success",
+      token: `Bearer ${token}`,
+      data: {
+        existingUser,
+      },
     });
   }
 
-  // Token
-  const token = jwt.signToken(existingUser._id);
-
-  res.status(200).json({
-    status: "success",
-    token: `Bearer ${token}`,
-  });
+  // If password doesnot match
+  if (password !== existingUser.password) {
+    existingUser.password = undefined;
+    errors.password = "Password is incorrect😅";
+    return res.status(401).json(errors);
+  }
 };
 
 exports.logout = (req, res, next) => {

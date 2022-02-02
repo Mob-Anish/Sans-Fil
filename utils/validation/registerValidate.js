@@ -10,15 +10,15 @@ const validateRegisterInput = (data) => {
   data.password = !isEmpty(data.password) ? data.password : "";
 
   if (!validator.isLength(data.name, { min: 3, max: 30 })) {
-    errors.name = "Your name is not strong enough 😅";
+    errors.name = "Your name must be atleast 3 characters 😅";
   }
 
   if (!validator.isLength(data.password, { min: 8, max: 30 })) {
-    errors.password = "Password is not strong enough 😅";
+    errors.password = "Password must be atleast 8 characters 😅";
   }
 
   if (validator.isEmpty(data.name)) {
-    errors.name = "Your name is empty";
+    errors.name = "Your name is empty 😅";
   }
 
   if (!validator.isEmail(data.email)) {
