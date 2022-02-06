@@ -5,6 +5,9 @@ import bulb from "../../Assets/img/bulb.png";
 import loginIllus from "../../Assets/img/loginIllus-1.png";
 import injectSheet from "react-jss";
 import { Link } from "react-router-dom";
+import * as userAction from "../../Actions/userActions";
+import * as userConstants from "../../Constants/userConstants";
+import { useDispatch, useSelector } from "react-redux";
 
 const styles = {
   signup: {
@@ -131,11 +134,15 @@ const Signup = ({ classes }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setError] = useState("");
+
+  const userRegisterData = useSelector((state) => state.userRegister);
+
+  const { error, success } = userRegisterData;
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(errors);
 
     const newUser = {
       name,
@@ -143,14 +150,17 @@ const Signup = ({ classes }) => {
       password,
     };
 
-    axios
-      .post("http://localhost:4000/api/v1/users/signup", newUser)
-      .then((res) => console.log(res.data))
-      .catch((err) => {
-        setError(err.response.data);
-        console.log(err.response.data);
-        console.log(errors);
-      });
+    // axios
+    //   .post("http://localhost:4000/api/v1/users/signup", newUser)
+    //   .then((res) => console.log(res.data))
+    //   .catch((err) => {
+    //     setError(err.response.data);
+    //     console.log(err.response.data);
+    //     console.log(errors);
+    //   });
+
+    // Dispatch action
+    dispatch(userAction.register(name, email, password));
   };
 
   return (
@@ -177,9 +187,7 @@ const Signup = ({ classes }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <div className="error-field">
-                {errors.name ? errors.name : ""}
-              </div>
+              <div className="error-field">{error ? error.name : ""}</div>
             </div>
             <div className="input-field">
               <label htmlFor="email">Email Address:</label>
@@ -192,7 +200,7 @@ const Signup = ({ classes }) => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <div className="error-field">
-                {errors.email ? errors.email : ""}
+                {error ? error.email : ""}
               </div>
             </div>
             <div className="input-field">
@@ -206,7 +214,7 @@ const Signup = ({ classes }) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <div className="error-field">
-                {errors.password ? errors.password : ""}
+                {error ? error.password : ""}
               </div>
             </div>
             <div
