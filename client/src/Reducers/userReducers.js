@@ -15,7 +15,7 @@ export const userLogin = (state = initialState, action) => {
         userInfo: action.payload,
         success: true,
       };
-    case userConstants.USER_EDIT_FAIL:
+    case userConstants.USER_AUTH_FAIL:
       return {
         error: action.payload,
       };

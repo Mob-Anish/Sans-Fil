@@ -1,10 +1,12 @@
-import { useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import imageOne from "../../Assets/img/login-illus.png";
 // import imageBg from "../../Assets/img/bg1.jpg";
 import bulb from "../../Assets/img/bulb.png";
 import injectSheet from "react-jss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import * as routes from "../../Constants/routes";
+import * as userAction from "../../Actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const styles = {
   login: {
@@ -134,24 +136,26 @@ const styles = {
 const Login = ({ classes }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  const userLoginData = useSelector((state) => state.userLogin);
+
+  const { error, success } = userLoginData;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (success) {
+      navigate(routes.DASHBOARD);
+    }
+  }, [success]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const user = {
-      email,
-      password,
-    };
-
-    axios
-      .post("http://localhost:4000/api/v1/users/login", user)
-      .then((res) => console.log(res.data))
-      .catch((err) => {
-        setError(err.response.data);
-        console.log(err.response.data);
-        console.log(errors);
-      });
+    // Dispatch action
+    dispatch(userAction.login(email, password));
   };
 
   return (
@@ -178,9 +182,7 @@ const Login = ({ classes }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <div className="error-field">
-                {errors.email ? errors.email : ""}
-              </div>
+              <div className="error-field">{error ? error.email : ""}</div>
             </div>
             <div className="input-field">
               <label htmlFor="password">Password:</label>
@@ -192,9 +194,7 @@ const Login = ({ classes }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <div className="error-field">
-                {errors.password ? errors.password : ""}
-              </div>
+              <div className="error-field">{error ? error.password : ""}</div>
             </div>
             <div
               className="submit-field"

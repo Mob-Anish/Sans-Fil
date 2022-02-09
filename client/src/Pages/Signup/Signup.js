@@ -1,13 +1,14 @@
-import { useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import imageOne from "../../Assets/img/image1.png";
 import bulb from "../../Assets/img/bulb.png";
 import loginIllus from "../../Assets/img/loginIllus-1.png";
 import injectSheet from "react-jss";
-import { Link } from "react-router-dom";
-import * as userAction from "../../Actions/userActions";
+import { Link, useNavigate } from "react-router-dom";
+import * as routes from "../../Constants/routes";
 import * as userConstants from "../../Constants/userConstants";
+import * as userAction from "../../Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
+import ErrorMessage from "../../Components/Message/errorMessage";
 
 const styles = {
   signup: {
@@ -130,10 +131,12 @@ const styles = {
   },
 };
 
-const Signup = ({ classes }) => {
+const Signup = ({ classes, history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const userRegisterData = useSelector((state) => state.userRegister);
 
@@ -141,23 +144,17 @@ const Signup = ({ classes }) => {
 
   const dispatch = useDispatch();
 
+  // Redirect after successful signup
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        navigate(routes.DASHBOARD);
+      }, 3000);
+    }
+  }, [success]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newUser = {
-      name,
-      email,
-      password,
-    };
-
-    // axios
-    //   .post("http://localhost:4000/api/v1/users/signup", newUser)
-    //   .then((res) => console.log(res.data))
-    //   .catch((err) => {
-    //     setError(err.response.data);
-    //     console.log(err.response.data);
-    //     console.log(errors);
-    //   });
 
     // Dispatch action
     dispatch(userAction.register(name, email, password));
@@ -165,94 +162,94 @@ const Signup = ({ classes }) => {
 
   return (
     <div className={classes.signup}>
-      <div className="content-holder">
-        <div className="signup-content">
-          <img src={bulb} alt="bulb img" />
-          <div className="logo-image">
-            <h1>Sans Fil</h1>
-          </div>
-          <div className="title">
-            <span>Welcome to</span>
-            <h1>Smart Home</h1>
-          </div>
-          <form onSubmit={handleSubmit}>
-            <div className="input-field">
-              <label htmlFor="name">Name:</label>
-              <input
-                type={"text"}
-                name="name"
-                className="name"
-                placeholder="Enter your name . . ."
-                autoFocus
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <div className="error-field">{error ? error.name : ""}</div>
+      {error && error.Error ? (
+        <ErrorMessage reset={userConstants.USER_REGISTER_RESET} />
+      ) : (
+        <div className="content-holder">
+          <div className="signup-content">
+            <img src={bulb} alt="bulb img" />
+            <div className="logo-image">
+              <h1>Sans Fil</h1>
             </div>
-            <div className="input-field">
-              <label htmlFor="email">Email Address:</label>
-              <input
-                type={"text"}
-                name="email"
-                className="email"
-                placeholder="Enter your email . . ."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <div className="error-field">
-                {error ? error.email : ""}
+            <div className="title">
+              <span>Welcome to</span>
+              <h1>Smart Home</h1>
+            </div>
+            <form onSubmit={handleSubmit}>
+              <div className="input-field">
+                <label htmlFor="name">Name:</label>
+                <input
+                  type={"text"}
+                  name="name"
+                  className="name"
+                  placeholder="Enter your name . . ."
+                  autoFocus
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <div className="error-field">{error ? error.name : ""}</div>
               </div>
-            </div>
-            <div className="input-field">
-              <label htmlFor="password">Password:</label>
-              <input
-                type={"password"}
-                name="password"
-                className="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <div className="error-field">
-                {error ? error.password : ""}
+              <div className="input-field">
+                <label htmlFor="email">Email Address:</label>
+                <input
+                  type={"text"}
+                  name="email"
+                  className="email"
+                  placeholder="Enter your email . . ."
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <div className="error-field">{error ? error.email : ""}</div>
               </div>
+              <div className="input-field">
+                <label htmlFor="password">Password:</label>
+                <input
+                  type={"password"}
+                  name="password"
+                  className="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <div className="error-field">{error ? error.password : ""}</div>
+              </div>
+              <div
+                className="submit-field"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <button type="submit">Signup</button>
+                <span>
+                  Already have an account ?{" "}
+                  <Link to="/login" style={{ textDecoration: "none" }}>
+                    <b
+                      style={{
+                        color: "red",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Login
+                    </b>
+                  </Link>
+                </span>
+              </div>
+            </form>
+          </div>
+          <div className="signup-illustration">
+            <div className="img-holder">
+              <div className="bg-stretch"></div>
             </div>
-            <div
-              className="submit-field"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <button type="submit">Signup</button>
-              <span>
-                Already have an account ?{" "}
-                <Link to="/login" style={{ textDecoration: "none" }}>
-                  <b
-                    style={{
-                      color: "red",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Login
-                  </b>
-                </Link>
-              </span>
+          </div>
+          <div className="image-content">
+            <div className="img-holder">
+              <div className="bg-stretch"></div>
             </div>
-          </form>
-        </div>
-        <div className="signup-illustration">
-          <div className="img-holder">
-            <div className="bg-stretch"></div>
           </div>
         </div>
-        <div className="image-content">
-          <div className="img-holder">
-            <div className="bg-stretch"></div>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

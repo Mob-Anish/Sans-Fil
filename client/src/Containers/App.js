@@ -9,9 +9,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path={routes.LOGIN} element={<Login />} exact />
-        <Route path={routes.SIGNUP} element={<Signup />} exact />
-        <Route path={routes.DASHBOARD} element={<SansFil />} />
+        <Route path={routes.LOGIN} element={<Login />} exact={true} />
+        <Route path={routes.SIGNUP} element={<Signup />} exact={true} />
+        <Route path={routes.DASHBOARD} element={<SansFil />} exact={true} />
       </Routes>
     </Router>
   );

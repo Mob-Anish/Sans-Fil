@@ -3,7 +3,9 @@ export const handleError = (err) => {
     if (err.response.data) {
       return err.response.data;
     } else {
-      return "Something went wrong 😅🙏";
+      return {
+        Error: "Something went wrong 🙏",
+      };
     }
   } else {
     return err.message;

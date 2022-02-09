@@ -19,9 +19,31 @@ export const register = (name, email, password) => async (dispatch) => {
       payload: message,
     });
   } catch (err) {
-    console.log(err);
     dispatch({
       type: userConstants.USER_REGISTER_FAIL,
+      payload: handleError(err),
+    });
+  }
+};
+
+export const login = (email, password) => async (dispatch) => {
+  try {
+    dispatch({ type: userConstants.USER_AUTH_START });
+
+    const body = {
+      email,
+      password,
+    };
+
+    const message = await userServices.loginUser(body);
+
+    dispatch({
+      type: userConstants.USER_AUTH_SUCCESS,
+      payload: message,
+    });
+  } catch (err) {
+    dispatch({
+      type: userConstants.USER_AUTH_FAIL,
       payload: handleError(err),
     });
   }
