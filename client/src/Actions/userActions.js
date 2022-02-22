@@ -1,6 +1,8 @@
 import * as userConstants from "../Constants/userConstants";
+import * as tokenSystem from "../Services/token";
 import * as userServices from "../Services/user";
 import { handleError } from "../Utils/error";
+import { setAuthToken } from "../Utils/setAuthToken";
 
 export const register = (name, email, password) => async (dispatch) => {
   try {
@@ -37,11 +39,21 @@ export const login = (email, password) => async (dispatch) => {
 
     const message = await userServices.loginUser(body);
 
+    const { token, data } = message;
+    const userInfo = { token, data };
+
+    // Set token in localstorage
+    tokenSystem.setToken(userInfo);
+
+    // Set token to Auth header
+    setAuthToken(token);
+
     dispatch({
       type: userConstants.USER_AUTH_SUCCESS,
       payload: message,
     });
   } catch (err) {
+    console.log(err);
     dispatch({
       type: userConstants.USER_AUTH_FAIL,
       payload: handleError(err),
