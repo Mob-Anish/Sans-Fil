@@ -7,6 +7,7 @@ import { HiOutlineLightBulb } from "react-icons/hi";
 import { BiBookmark } from "react-icons/bi";
 import "./index.css";
 import noProf from "../../Assets/img/no-prof.png";
+import * as getDate from "../../Utils/date";
 
 const styles = {
   dashboard: {
@@ -84,6 +85,37 @@ const styles = {
           "& .profile-holder": {
             display: "flex",
             alignItems: "center",
+            boxShadow:
+              "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
+            padding: "5px 10px",
+            borderRadius: "3.2rem",
+            cursor: "pointer",
+            position: "relative",
+            "&:hover .prof-dropdown": {
+              display: "flex",
+            },
+            "&:hover": {
+              boxShadow: "none",
+            },
+            "& .prof-dropdown": {
+              boxShadow:
+                "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
+              position: "absolute",
+              borderRadius: "1rem",
+              left: "0",
+              top: "6rem",
+              display: "none",
+              flexDirection: "column",
+              justifyContent: "center",
+              width: "100%",
+              fontSize: "1.2rem",
+              "& h2": {
+                borderRadius: "1rem",
+              },
+              "& h2:hover": {
+                background: "red",
+              },
+            },
             "& .img-holder": {
               marginRight: "1rem",
               height: "5rem",
@@ -178,15 +210,19 @@ const Dashboard = ({ classes }) => {
           <div className="header">
             <div className="date">
               <h2 className="date" style={{ color: "#D158C5" }}>
-                02 Nov 2021
+                {`${getDate.getDay()} ${getDate.getMonth} ${getDate.getYear}`}
               </h2>
-              <h2 className="respect">Good Morning 😎😎</h2>
+              <h1 className="respect">Good Morning 😎😎</h1>
             </div>
             <div className="profile-holder">
               <div className="img-holder">
                 <div className="background-image"></div>
               </div>
               <h1 className="name">Anish Manandhar</h1>
+              <div className="prof-dropdown">
+                <h2 style={{ padding: "1.3rem 6rem" }}>Profile</h2>
+                <h2 style={{ padding: "1.3rem 6rem" }}>Logout</h2>
+              </div>
             </div>
           </div>
           <div className="content-holder">

@@ -149,7 +149,7 @@ const Signup = ({ classes, history }) => {
     if (success) {
       setTimeout(() => {
         navigate(routes.DASHBOARD);
-      }, 3000);
+      }, 2500);
     }
   }, [success]);
 
