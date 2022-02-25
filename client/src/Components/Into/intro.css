@@ -1,0 +1,71 @@
+.intro {
+  height: 100vh;
+  padding: 3rem 9rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .navbar ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.header .logo h1 {
+  font-size: 3rem;
+}
+
+.header .navbar ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.header .navbar ul li:not(:last-child) {
+  margin-right: 6rem;
+}
+
+.main {
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main .intro-tag h1 {
+  font-size: 6.5rem;
+}
+
+.intro-tag button {
+  border: none;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background-color: red;
+  color: white;
+  border-radius: 1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.intro .img-holder {
+  height: 70rem;
+  width: 85rem;
+}
+
+.intro .img-holder .bg-image {
+  background: url(../../Assets/img/image1.png);
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

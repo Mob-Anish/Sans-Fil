@@ -4,10 +4,16 @@ import { FiSettings } from "react-icons/fi";
 import { BiTime } from "react-icons/bi";
 import { GoLightBulb } from "react-icons/go";
 import { HiOutlineLightBulb } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 import { BiBookmark } from "react-icons/bi";
 import "./index.css";
 import noProf from "../../Assets/img/no-prof.png";
+import { useDispatch, useSelector } from "react-redux";
+// import * as userConstants from "../../Constants/userConstants";
+import * as userAction from "../../Actions/userActions";
 import * as getDate from "../../Utils/date";
+import { useEffect } from "react";
+import * as routes from "../../Constants/routes";
 
 const styles = {
   dashboard: {
@@ -175,6 +181,26 @@ const mergeSideBar = () => {
 };
 
 const Dashboard = ({ classes }) => {
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const userAuthData = useSelector((state) => state.userInfo);
+
+  const { isAuthorized } = userAuthData;
+
+  useEffect(() => {
+    if (!isAuthorized) {
+      navigate(routes.HOME);
+    }
+  });
+
+  // OnClick logout event
+  const logout = () => {
+    dispatch(userAction.logout());
+    navigate(routes.LOGIN);
+  };
+
   return (
     <div className={classes.dashboard}>
       <div className="content">
@@ -221,7 +247,9 @@ const Dashboard = ({ classes }) => {
               <h1 className="name">Anish Manandhar</h1>
               <div className="prof-dropdown">
                 <h2 style={{ padding: "1.3rem 6rem" }}>Profile</h2>
-                <h2 style={{ padding: "1.3rem 6rem" }}>Logout</h2>
+                <h2 style={{ padding: "1.3rem 6rem" }} onClick={logout}>
+                  Logout
+                </h2>
               </div>
             </div>
           </div>

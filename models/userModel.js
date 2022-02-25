@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
   },
   accessToken: {
     type: String,
-    default: "03DE11F42DF93724B745A5F3F6DB001A",
+    // default: "03DE11F42DF93724B745A5F3F6DB001A",
   },
 });
 

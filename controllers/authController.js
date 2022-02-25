@@ -22,20 +22,20 @@ exports.signup = async (req, res) => {
   }
 
   // Create new user
-  const newUser = await User.create({
+  const user = await User.create({
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
   });
 
   // Token
-  const token = jwt.signToken(newUser._id);
+  const token = jwt.signToken(user._id);
 
   res.status(200).json({
     status: "success",
     token: `Bearer ${token}`,
     data: {
-      newUser,
+      user,
     },
   });
 };
@@ -50,29 +50,29 @@ exports.login = async (req, res, next) => {
   if (!isValid) return res.status(400).json(errors);
 
   // Check the user credentials
-  const existingUser = await User.findOne({
+  const user = await User.findOne({
     email,
   }).select("+password");
 
   // If user credentials invalid
-  if (!existingUser) {
+  if (!user) {
     errors.email = "Umm there is no such user with that email.😅";
     return res.status(401).json(errors);
   }
 
   // If password matches
-  if (password === existingUser.password) {
+  if (password === user.password) {
     // Hiding password
-    existingUser.password = undefined;
+    user.password = undefined;
 
     // Token
-    const token = jwt.signToken(existingUser._id);
+    const token = jwt.signToken(user._id);
 
     return res.status(200).json({
       status: "success",
       token: `Bearer ${token}`,
       data: {
-        existingUser,
+        user,
       },
     });
   }

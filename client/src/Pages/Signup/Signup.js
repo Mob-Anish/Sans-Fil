@@ -131,7 +131,7 @@ const styles = {
   },
 };
 
-const Signup = ({ classes, history }) => {
+const Signup = ({ classes }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -139,19 +139,21 @@ const Signup = ({ classes, history }) => {
   const navigate = useNavigate();
 
   const userRegisterData = useSelector((state) => state.userRegister);
+  const userAuthData = useSelector((state) => state.userInfo);
 
-  const { error, success } = userRegisterData;
+  const { error } = userRegisterData;
+  const { isAuthenticated } = userAuthData;
 
   const dispatch = useDispatch();
 
   // Redirect after successful signup
   useEffect(() => {
-    if (success) {
+    if (isAuthenticated) {
       setTimeout(() => {
         navigate(routes.DASHBOARD);
       }, 2500);
     }
-  }, [success]);
+  }, [isAuthenticated]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

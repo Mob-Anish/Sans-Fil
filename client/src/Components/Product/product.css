@@ -1,0 +1,22 @@
+.product {
+  height: 100vh;
+  padding: 8rem 9rem;
+}
+
+.product h1 {
+  font-size: 3rem;
+}
+
+.product-cards {
+  display: flex;
+  align-items: center;
+}
+
+.product-cards .card .img-holder {
+  height: 20rem;
+  width: 20rem;
+}
+
+.product-cards .card {
+  border: 1px solid red;
+}

@@ -140,16 +140,26 @@ const Login = ({ classes }) => {
   const navigate = useNavigate();
 
   const userLoginData = useSelector((state) => state.userLogin);
+  const userAuthData = useSelector((state) => state.userInfo);
 
-  const { error, success } = userLoginData;
+  const { isAuthorized, isAuthenticated, isAdmin } = userAuthData;
+  const { error } = userLoginData;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (success) {
-      navigate(routes.DASHBOARD);
+    if (isAuthorized) {
+      return navigate(routes.DASHBOARD);
     }
-  }, [success]);
+
+    if (isAdmin) {
+      return navigate(routes.ADMIN);
+    }
+
+    if (isAuthenticated) {
+      navigate(routes.HOME);
+    }
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();

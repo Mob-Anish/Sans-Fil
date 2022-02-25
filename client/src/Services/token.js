@@ -1,4 +1,4 @@
-export const setToken = (useInfo) => {
+export const setToken = (userInfo) => {
   localStorage.setItem("userInfo", JSON.stringify(userInfo));
 };
 
