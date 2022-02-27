@@ -14,13 +14,22 @@ const post = (url, { params = {}, body = {} } = {}) => {
     params,
     data: body,
     method: "post",
-  })
-    .then((response) => response);
+  }).then((response) => response);
+};
+
+const patch = (url, { params = {}, body = {} } = {}) => {
+  return instance({
+    url,
+    params,
+    data: body,
+    method: "patch",
+  }).then((response) => response);
 };
 
 const http = {
   instance,
   post,
+  patch,
 };
 
 export default http;

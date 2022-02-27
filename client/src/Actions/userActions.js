@@ -110,3 +110,17 @@ export const setCurrentUser = (data) => {
     payload: data,
   };
 };
+
+export const buyProduct = () => (dispatch) => {
+  try {
+    const message = await userServices.buyProduct();
+
+    const { data } = message;
+
+    if (data.user.accessToken) {
+      dispatch(setCurrentUser(data));
+    }
+  } catch (err) {
+    console.Consolelog(err);
+  }
+};

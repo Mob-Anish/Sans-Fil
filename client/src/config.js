@@ -4,6 +4,7 @@ const config = {
     user: {
       login: "/users/login",
       create: "/users/signup",
+      buyProduct: "/users/buy",
     },
   },
 };

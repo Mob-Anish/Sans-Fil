@@ -85,10 +85,24 @@ exports.login = async (req, res, next) => {
   }
 };
 
+// Logout User
 exports.logout = (req, res, next) => {
   console.log(req.body);
   res.status(200).json({
     status: "success",
     message: "login",
   });
+};
+
+// Admin role checkup
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res.status(403).json({
+        message: "Unauthorized",
+      });
+    }
+
+    next();
+  };
 };

@@ -16,3 +16,9 @@ export const loginUser = async (body) => {
 
   return data;
 };
+
+export const buyProduct = async () => {
+  const { data } = await http.patch(config.apiEndPoint.user.buyProduct);
+
+  return data;
+};
