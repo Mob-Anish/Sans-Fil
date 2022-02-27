@@ -1,0 +1,41 @@
+.sansfil--home .about {
+  height: 100vh;
+  padding: 12rem 12rem;
+  position: relative;
+}
+
+.sansfil--home .about .border-bottom {
+  width: 15rem;
+  background: red;
+  height: 5px;
+  display: block;
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.sansfil--home .about .description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6rem;
+}
+
+.sansfil--home .about .description .img-holder {
+  height: 55rem;
+  width: 55rem;
+}
+
+.sansfil--home .about .description .content {
+  width: 50%;
+}
+
+.sansfil--home .about .description .bg-image {
+  background: url(../../Assets/img/About.jpg);
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

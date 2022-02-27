@@ -1,6 +1,6 @@
-.product {
+.sansfil--home .product {
   height: 100vh;
-  padding: 8rem 9rem;
+  padding: 8rem 12rem;
 }
 
 .product h1 {
@@ -10,13 +10,54 @@
 .product-cards {
   display: flex;
   align-items: center;
+  margin-top: 10rem;
 }
 
 .product-cards .card .img-holder {
-  height: 20rem;
-  width: 20rem;
+  height: 31rem;
+  width: 28rem;
+  margin-bottom: 3rem;
+}
+
+.product-cards .card1 .bg-image {
+  background: url(../../Assets/img/bulb.png);
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.product-cards .card2 .bg-image {
+  background: url(../../Assets/img/bulb.png);
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.product-cards .card button {
+  border: none;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  font-size: 1.9rem;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+}
+
+button:hover {
+  transform: translateY(-4px);
+}
+
+.product-cards .card .description {
+  background: red;
+  color: white;
+  padding: 3rem;
+  border-radius: 3rem;
 }
 
 .product-cards .card {
-  border: 1px solid red;
+  width: 50rem;
 }

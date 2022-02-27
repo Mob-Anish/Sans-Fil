@@ -198,7 +198,7 @@ const Dashboard = ({ classes }) => {
   // OnClick logout event
   const logout = () => {
     dispatch(userAction.logout());
-    navigate(routes.LOGIN);
+    navigate(routes.HOME);
   };
 
   return (

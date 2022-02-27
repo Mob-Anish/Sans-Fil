@@ -1,6 +1,6 @@
-.intro {
+.sansfil--home .intro {
   height: 100vh;
-  padding: 3rem 9rem;
+  padding: 3rem 12rem;
 }
 
 .header {
@@ -34,8 +34,62 @@ a {
   margin-right: 6rem;
 }
 
+.header .navbar ul .login a {
+  padding: 1rem 2rem;
+  background-color: red;
+  color: white;
+  border-radius: 2.5rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.header .navbar ul .auth-user .img-holder {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.header .navbar ul .auth-user {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.header .navbar ul .auth-user:hover .prof-dropdown {
+  display: block;
+}
+
+.header .navbar ul .auth-user .prof-dropdown {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 1rem;
+  left: "0";
+  display: none;
+  text-align: center;
+  width: 120%;
+  font-size: 1.2rem;
+}
+
+.header .navbar ul .auth-user .prof-dropdown h2:hover {
+  background: red;
+}
+
+.header .navbar ul .auth-user .img-holder .bg-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  background: url(../../Assets/img/no-prof.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .main {
-  height: 80%;
+  height: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,10 +104,15 @@ a {
   margin-top: 2rem;
   padding: 1rem 2rem;
   background-color: red;
-  color: white;
-  border-radius: 1rem;
+  color: white !important;
+  border-radius: 2rem;
   font-size: 1.8rem;
   cursor: pointer;
+  transition: transform 0.3s ease-out;
+}
+
+.intro-tag button a {
+  color: white;
 }
 
 .intro .img-holder {

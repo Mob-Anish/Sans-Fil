@@ -1,7 +1,33 @@
 import "./intro.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import * as routes from "../../Constants/routes";
+import * as userAction from "../../Actions/userActions";
 
 const Intro = () => {
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const userAuthData = useSelector((state) => state.userInfo);
+
+  const { isAuthenticated, isAuthorized, userInfo } = userAuthData;
+
+  console.log(userInfo);
+
+  useEffect(() => {
+    if (isAuthorized) {
+      navigate(routes.ADMIN);
+    }
+  }, [isAuthorized]);
+
+  // OnClick logout event
+  const logout = () => {
+    dispatch(userAction.logout());
+    navigate(routes.HOME);
+  };
+
   return (
     <div className="intro">
       <div className="header">
@@ -16,13 +42,38 @@ const Intro = () => {
             <li>
               <a href="#Products">Products</a>
             </li>
-            <li>About</li>
             <li>
-              <Link to="/signup">Signup</Link>
+              <a href="#AboutUs">About Us</a>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
+            {isAuthenticated ? (
+              <ul>
+                <li className="auth-user">
+                  <div className="img-holder">
+                    <div className="bg-image"></div>
+                  </div>
+                  <div style={{ marginLeft: ".5rem" }}>
+                    {userInfo.user.name}
+                  </div>
+                  <div className="prof-dropdown">
+                    <h2
+                      style={{ padding: "1rem 2rem", borderRadius: "1rem" }}
+                      onClick={logout}
+                    >
+                      Logout
+                    </h2>
+                  </div>
+                </li>
+              </ul>
+            ) : (
+              <ul className="register-link">
+                <li>
+                  <Link to="/signup">Signup</Link>
+                </li>
+                <li className="login">
+                  <Link to="/login">Login</Link>
+                </li>
+              </ul>
+            )}
           </ul>
         </div>
       </div>
@@ -36,7 +87,9 @@ const Intro = () => {
           <p style={{ fontSize: "2rem" }}>
             you can control through a web or mobile application.
           </p>
-          <button>Products</button>
+          <button>
+            <a href="#Products">Products</a>
+          </button>
         </div>
         <div className="img-holder">
           <div className="bg-image"></div>
