@@ -12,22 +12,12 @@ import { logout, setCurrentUser } from "../Actions/userActions";
 import * as userConstants from "../Constants/userConstants";
 import Admin from "../Pages/Admin/Admin";
 
-if (localStorage.userInfo) {
-  const data = JSON.parse(localStorage.userInfo);
-  const decoded = jwt_decode(data.token);
+if (localStorage.token) {
+  const data = JSON.parse(localStorage.token);
+  const decoded = jwt_decode(data);
 
   //Set auth token header Auth
-  setAuthToken(data.token);
-  // Set user and isAuthenticated
-  store.dispatch(setCurrentUser(data.data));
-
-  if (data.data.user.accessToken) {
-    store.dispatch({ type: userConstants.USER_AUTHORIZE, payload: data.data });
-  }
-
-  if (data.data.user.role === "admin") {
-    store.dispatch({ type: userConstants.IS_ADMIN, payload: data.data });
-  }
+  setAuthToken(data);
 
   // Check for expired time jwt token
   const currentTime = Date.now() / 1000;
@@ -36,6 +26,21 @@ if (localStorage.userInfo) {
     store.dispatch(logout());
     // Redirect
     window.location.href = "/login";
+  }
+}
+
+if (localStorage.userInfo) {
+  const data = JSON.parse(localStorage.userInfo);
+
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(data));
+
+  if (data.user.accessToken) {
+    store.dispatch({ type: userConstants.USER_AUTHORIZE, payload: data });
+  }
+
+  if (data.user.role === "admin") {
+    store.dispatch({ type: userConstants.IS_ADMIN, payload: data });
   }
 }
 

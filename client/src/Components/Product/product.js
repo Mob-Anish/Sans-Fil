@@ -1,10 +1,13 @@
 import "./product.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as routes from "../../Constants/routes";
+import * as userAction from "../../Actions/userActions";
 
 const product = () => {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const userAuthData = useSelector((state) => state.userInfo);
 
@@ -12,6 +15,10 @@ const product = () => {
 
   const loginToBuy = () => {
     navigate(routes.LOGIN);
+  };
+
+  const buyProduct = () => {
+    dispatch(userAction.buyProduct());
   };
 
   return (
@@ -31,7 +38,7 @@ const product = () => {
               nisi ut aliquip ex ea commodo consequat
             </p>
             {isAuthenticated ? (
-              <button>Buy</button>
+              <button onClick={buyProduct}>Buy</button>
             ) : (
               <button onClick={loginToBuy}>Login to buy</button>
             )}
@@ -51,7 +58,7 @@ const product = () => {
               nisi ut aliquip ex ea commodo consequat
             </p>
             {isAuthenticated ? (
-              <button>Buy</button>
+              <button onClick={buyProduct}>Buy</button>
             ) : (
               <button onClick={loginToBuy}>Login to buy</button>
             )}

@@ -46,7 +46,10 @@ export const login = (email, password) => async (dispatch) => {
     console.log(data);
 
     // Set token in localstorage
-    tokenSystem.setToken(message);
+    tokenSystem.setToken(token);
+
+    // Set user info in localstorage
+    tokenSystem.setUserInfo(data);
 
     // Set token to Auth header
     setAuthToken(token);
@@ -111,16 +114,22 @@ export const setCurrentUser = (data) => {
   };
 };
 
-export const buyProduct = () => (dispatch) => {
+// Buy product
+export const buyProduct = () => async (dispatch) => {
   try {
     const message = await userServices.buyProduct();
 
     const { data } = message;
 
+    console.log(data);
+
     if (data.user.accessToken) {
-      dispatch(setCurrentUser(data));
+      dispatch({
+        type: userConstants.USER_AUTHORIZE,
+        payload: data,
+      });
     }
   } catch (err) {
-    console.Consolelog(err);
+    console.log(err);
   }
 };

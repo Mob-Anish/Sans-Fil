@@ -1,7 +1,6 @@
 import "./intro.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import * as routes from "../../Constants/routes";
 import * as userAction from "../../Actions/userActions";
 
@@ -12,15 +11,7 @@ const Intro = () => {
 
   const userAuthData = useSelector((state) => state.userInfo);
 
-  const { isAuthenticated, isAuthorized, userInfo } = userAuthData;
-
-  console.log(userInfo);
-
-  useEffect(() => {
-    if (isAuthorized) {
-      navigate(routes.ADMIN);
-    }
-  }, [isAuthorized]);
+  const { isAuthenticated, userInfo } = userAuthData;
 
   // OnClick logout event
   const logout = () => {

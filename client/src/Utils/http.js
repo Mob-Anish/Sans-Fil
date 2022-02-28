@@ -1,5 +1,6 @@
 import axios from "axios";
 import config from "../config";
+import * as tokenService from "../Services/token";
 
 const instance = axios.create({
   baseURL: config.baseURI,
@@ -8,26 +9,69 @@ const instance = axios.create({
   },
 });
 
-const post = (url, { params = {}, body = {} } = {}) => {
+const get = (
+  url,
+  { params = {}, accessToken = false, body = {}, headers = {} } = {}
+) => {
+  const authHeaders = {};
+
+  if (accessToken) {
+    authHeaders["Authorization"] = `${tokenService.getAccessToken()}`;
+  }
+
+  return instance({
+    url,
+    params,
+    data: body,
+    method: "get",
+    headers: { ...authHeaders, ...headers },
+  }).then((response) => response);
+};
+
+const post = (
+  url,
+  { params = {}, accessToken = false, body = {}, headers = {} } = {}
+) => {
+  const authHeaders = {};
+
+  if (accessToken) {
+    authHeaders["Authorization"] = `${tokenService.getAccessToken()}`;
+  }
+
   return instance({
     url,
     params,
     data: body,
     method: "post",
+    headers: { ...authHeaders, ...headers },
   }).then((response) => response);
 };
 
-const patch = (url, { params = {}, body = {} } = {}) => {
+const patch = (
+  url,
+  { params = {}, accessToken = false, body = {}, headers = {} } = {}
+) => {
+  const authHeaders = {};
+
+  console.log(accessToken);
+
+  if (accessToken) {
+    console.log("token set");
+    authHeaders["Authorization"] = `${tokenService.getAccessToken()}`;
+  }
+
   return instance({
     url,
     params,
     data: body,
     method: "patch",
+    headers: { ...authHeaders, ...headers },
   }).then((response) => response);
 };
 
 const http = {
   instance,
+  get,
   post,
   patch,
 };

@@ -80,6 +80,7 @@ const styles = {
           textTransform: "uppercase",
           borderRadius: "3rem",
           fontFamily: "Quicksand",
+          transition: "transform 0.3s ease-out",
         },
       },
       // "& .login-illustration": {
