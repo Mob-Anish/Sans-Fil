@@ -140,10 +140,8 @@ const Signup = ({ classes }) => {
   const navigate = useNavigate();
 
   const userRegisterData = useSelector((state) => state.userRegister);
-  const userAuthData = useSelector((state) => state.userInfo);
 
-  const { error } = userRegisterData;
-  const { isAuthenticated } = userAuthData;
+  const { error, isAuthenticated } = userRegisterData;
 
   const dispatch = useDispatch();
 
@@ -151,7 +149,7 @@ const Signup = ({ classes }) => {
   useEffect(() => {
     if (isAuthenticated) {
       setTimeout(() => {
-        navigate(routes.DASHBOARD);
+        navigate(routes.HOME);
       }, 2500);
     }
   }, [isAuthenticated]);

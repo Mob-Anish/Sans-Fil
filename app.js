@@ -8,6 +8,7 @@ const xss = require("xss-clean");
 const passport = require("passport");
 
 const userRouter = require("./routes/userRoutes");
+const deviceRouter = require("./routes/deviceRoutes");
 
 const app = express();
 
@@ -52,5 +53,6 @@ require("./config/passport")(passport);
 
 //-------- Api Routes --------//
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/devices", deviceRouter);
 
 module.exports = app;

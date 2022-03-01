@@ -42,10 +42,4 @@ router.delete(
   userController.deleteUser
 );
 
-router.patch(
-  "/buy",
-  passport.authenticate("jwt", { session: false }),
-  userController.buyProduct
-);
-
 module.exports = router;

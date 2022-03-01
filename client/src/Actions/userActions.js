@@ -1,6 +1,7 @@
 import * as userConstants from "../Constants/userConstants";
 import * as tokenSystem from "../Services/token";
 import * as userServices from "../Services/user";
+import * as deviceServices from "../Services/device";
 import { handleError } from "../Utils/error";
 import { setAuthToken } from "../Utils/setAuthToken";
 
@@ -17,6 +18,18 @@ export const register = (name, email, password) => async (dispatch) => {
 
     const message = await userServices.registerUser(body);
 
+    const { token, data } = message;
+
+    // Set token in localstorage
+    tokenSystem.setToken(token);
+
+    // Set user info in localstorage
+    tokenSystem.setUserInfo(data);
+
+    // Set current user data
+    dispatch(setCurrentUser(data));
+
+    // Success
     dispatch({
       type: userConstants.USER_REGISTER_SUCCESS,
       payload: message,
@@ -50,9 +63,6 @@ export const login = (email, password) => async (dispatch) => {
 
     // Set user info in localstorage
     tokenSystem.setUserInfo(data);
-
-    // Set token to Auth header
-    setAuthToken(token);
 
     // If user has access token and jwt token
     if (data.user.accessToken && token) {
@@ -117,7 +127,7 @@ export const setCurrentUser = (data) => {
 // Buy product
 export const buyProduct = () => async (dispatch) => {
   try {
-    const message = await userServices.buyProduct();
+    const message = await deviceServices.buyProduct();
 
     const { data } = message;
 

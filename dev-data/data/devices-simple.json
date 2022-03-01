@@ -1,0 +1,23 @@
+[
+    {
+        "id": 0,
+        "name": "Light Bulb",
+        "pin_no": 1,
+        "watt": 60,
+        "status": 1
+    },
+    {
+        "id": 1,
+        "name": "Ceiling Fan",
+        "pin_no": 2,
+        "watt": 80,
+        "status": 1
+    },
+    {
+        "id": 2,
+        "name": "Microwave",
+        "pin_no": 3,
+        "watt": 600,
+        "status": 1
+    }
+]

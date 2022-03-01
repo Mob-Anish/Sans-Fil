@@ -78,8 +78,8 @@ exports.login = async (req, res, next) => {
   }
 
   // If password doesnot match
-  if (password !== existingUser.password) {
-    existingUser.password = undefined;
+  if (password !== user.password) {
+    user.password = undefined;
     errors.password = "Your email or password may be incorrect😅";
     return res.status(401).json(errors);
   }

@@ -22,21 +22,3 @@ exports.deleteUser = async (req, res, next) => {
     data: null,
   });
 };
-
-//----- Integrating accessToken on user db -----//
-exports.buyProduct = async (req, res, next) => {
-  const user = await User.findByIdAndUpdate(
-    req.user._id,
-    {
-      accessToken: "03DE11F42DF93724B745A5F3F6DB001A",
-    },
-    { new: true }
-  );
-
-  res.status(200).json({
-    status: "success",
-    data: {
-      user,
-    },
-  });
-};
