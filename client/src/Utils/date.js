@@ -17,7 +17,8 @@ const days = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 export const getDay = () => {
   const day = date.getDay();
-  if (days.includes(`${day}`)) return `0${day}`;
+  if (day === 0) return `0${day + 1}`;
+  if (days.includes(`${day}`)) return `0${day - 1}`;
 };
 export const getMonth = months[date.getMonth()];
 export const getYear = date.getFullYear();

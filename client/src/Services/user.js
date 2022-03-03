@@ -16,5 +16,3 @@ export const loginUser = async (body) => {
 
   return data;
 };
-
-

@@ -11,15 +11,15 @@ const product = () => {
 
   const userAuthData = useSelector((state) => state.userInfo);
 
-  const { isAuthenticated, isAuthorized } = userAuthData;
+  const { isAuthenticated } = userAuthData;
 
-  const loginToBuy = () => {
-    navigate(routes.LOGIN);
-  };
+  // const loginToBuy = () => {
+  //   navigate(routes.LOGIN);
+  // };
 
-  const buyProduct = () => {
-    dispatch(userAction.buyProduct());
-  };
+  // const buyProduct = () => {
+  //   dispatch(userAction.buyProduct());
+  // };
 
   return (
     <div className="product" id="Products">
@@ -37,11 +37,11 @@ const product = () => {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat
             </p>
-            {isAuthenticated ? (
+            {/* {isAuthenticated ? (
               <button onClick={buyProduct}>Buy</button>
             ) : (
               <button onClick={loginToBuy}>Login to buy</button>
-            )}
+            )} */}
           </div>
         </div>
         <div className="card card2" style={{ marginLeft: "10rem" }}>
@@ -57,11 +57,11 @@ const product = () => {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat
             </p>
-            {isAuthenticated ? (
+            {/* {isAuthenticated ? (
               <button onClick={buyProduct}>Buy</button>
             ) : (
               <button onClick={loginToBuy}>Login to buy</button>
-            )}
+            )} */}
           </div>
         </div>
       </div>

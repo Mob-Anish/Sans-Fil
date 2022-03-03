@@ -185,15 +185,15 @@ const Dashboard = ({ classes }) => {
 
   const dispatch = useDispatch();
 
-  const userAuthData = useSelector((state) => state.userInfo);
+  // const userAuthData = useSelector((state) => state.userInfo);
 
-  const { isAuthorized } = userAuthData;
+  // const { isAuthorized } = userAuthData;
 
-  useEffect(() => {
-    if (!isAuthorized) {
-      navigate(routes.HOME);
-    }
-  });
+  // useEffect(() => {
+  //   if (!isAuthorized) {
+  //     navigate(routes.HOME);
+  //   }
+  // });
 
   // OnClick logout event
   const logout = () => {

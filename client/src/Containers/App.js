@@ -7,7 +7,6 @@ import Signup from "../Pages/Signup/Signup";
 import Home from "../Pages/Home/Home";
 import SansFil from "../Pages/Dashboard/SansFil";
 import * as routes from "./../Constants/routes";
-import { setAuthToken } from "../Utils/setAuthToken";
 import { logout, setCurrentUser } from "../Actions/userActions";
 import * as userConstants from "../Constants/userConstants";
 import Admin from "../Pages/Admin/Admin";
@@ -15,9 +14,6 @@ import Admin from "../Pages/Admin/Admin";
 if (localStorage.token) {
   const data = JSON.parse(localStorage.token);
   const decoded = jwt_decode(data);
-
-  //Set auth token header Auth
-  setAuthToken(data);
 
   // Check for expired time jwt token
   const currentTime = Date.now() / 1000;
@@ -35,16 +31,18 @@ if (localStorage.userInfo) {
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(data));
 
-  if (data.user.accessToken) {
-    store.dispatch({ type: userConstants.USER_AUTHORIZE, payload: data });
-  }
+  // if (data.user.accessToken) {
+  //   store.dispatch({ type: userConstants.USER_AUTHORIZE, payload: data });
+  // }
 
-  if (data.user.role === "admin") {
-    store.dispatch({ type: userConstants.IS_ADMIN, payload: data });
-  }
+  // if (data.user.role === "admin") {
+  //   store.dispatch({ type: userConstants.IS_ADMIN, payload: data });
+  // }
 }
 
 function App() {
+  //console.log(process.env);
+
   return (
     <Router>
       <Routes>

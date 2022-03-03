@@ -1,6 +1,6 @@
 import About from "../../Components/About/about";
 import Footer from "../../Components/Footer/footer";
-import Intro from "../../Components/Into/Intro";
+import Intro from "../../Components/Intro/Intro";
 import Product from "../../Components/Product/product";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
@@ -13,15 +13,18 @@ const Home = () => {
 
   const userAuthData = useSelector((state) => state.userInfo);
 
-  const { isAuthorized, isAdmin } = userAuthData;
+  const { isAuthenticated } = userAuthData;
 
   useEffect(() => {
-    if (isAuthorized) {
-      navigate(routes.DASHBOARD);
-    }
+    // if (isAuthorized) {
+    //   navigate(routes.DASHBOARD);
+    // }
 
-    if (isAdmin) {
-      navigate(routes.ADMIN);
+    // if (isAdmin) {
+    //   navigate(routes.ADMIN);
+    // }
+    if (isAuthenticated) {
+      navigate(routes.DASHBOARD);
     }
   });
 

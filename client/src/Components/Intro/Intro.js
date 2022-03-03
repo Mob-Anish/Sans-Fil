@@ -42,9 +42,7 @@ const Intro = () => {
                   <div className="img-holder">
                     <div className="bg-image"></div>
                   </div>
-                  <div style={{ marginLeft: ".5rem" }}>
-                    {userInfo.user.name}
-                  </div>
+                  <div style={{ marginLeft: ".5rem" }}>{userInfo.name}</div>
                   <div className="prof-dropdown">
                     <h2
                       style={{ padding: "1rem 2rem", borderRadius: "1rem" }}

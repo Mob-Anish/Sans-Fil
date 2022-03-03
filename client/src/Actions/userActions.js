@@ -1,9 +1,8 @@
 import * as userConstants from "../Constants/userConstants";
 import * as tokenSystem from "../Services/token";
 import * as userServices from "../Services/user";
-import * as deviceServices from "../Services/device";
+// import * as deviceServices from "../Services/device";
 import { handleError } from "../Utils/error";
-import { setAuthToken } from "../Utils/setAuthToken";
 
 // Register action
 export const register = (name, email, password) => async (dispatch) => {
@@ -52,11 +51,11 @@ export const login = (email, password) => async (dispatch) => {
       password,
     };
 
-    const message = await userServices.loginUser(body);
+    const userInfo = await userServices.loginUser(body);
 
-    const { token, data } = message;
+    const { data } = userInfo;
 
-    console.log(data);
+    const { token } = data;
 
     // Set token in localstorage
     tokenSystem.setToken(token);
@@ -65,30 +64,30 @@ export const login = (email, password) => async (dispatch) => {
     tokenSystem.setUserInfo(data);
 
     // If user has access token and jwt token
-    if (data.user.accessToken && token) {
-      dispatch({
-        type: userConstants.USER_AUTHORIZE,
-        payload: data,
-      });
+    // if (data.user.accessToken && token) {
+    //   dispatch({
+    //     type: userConstants.USER_AUTHORIZE,
+    //     payload: data,
+    //   });
 
-      return dispatch({
-        type: userConstants.USER_AUTH_SUCCESS,
-        payload: message,
-      });
-    }
+    //   return dispatch({
+    //     type: userConstants.USER_AUTH_SUCCESS,
+    //     payload: message,
+    //   });
+    // }
 
     // If user is admin
-    if (data.user.role === "admin" && token) {
-      dispatch({
-        type: userConstants.IS_ADMIN,
-        payload: data,
-      });
+    // if (data.user.role === "admin" && token) {
+    //   dispatch({
+    //     type: userConstants.IS_ADMIN,
+    //     payload: data,
+    //   });
 
-      return dispatch({
-        type: userConstants.USER_AUTH_SUCCESS,
-        payload: message,
-      });
-    }
+    //   return dispatch({
+    //     type: userConstants.USER_AUTH_SUCCESS,
+    //     payload: message,
+    //   });
+    // }
 
     // If user has only jwt token
     if (token) {
@@ -97,7 +96,7 @@ export const login = (email, password) => async (dispatch) => {
 
       dispatch({
         type: userConstants.USER_AUTH_SUCCESS,
-        payload: message,
+        payload: data,
       });
     }
   } catch (err) {
@@ -111,7 +110,6 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   tokenSystem.removeToken();
-  setAuthToken(false);
   dispatch({ type: userConstants.USER_INFO_RESET });
   dispatch({ type: userConstants.RESET });
 };
@@ -125,21 +123,21 @@ export const setCurrentUser = (data) => {
 };
 
 // Buy product
-export const buyProduct = () => async (dispatch) => {
-  try {
-    const message = await deviceServices.buyProduct();
+// export const buyProduct = () => async (dispatch) => {
+//   try {
+//     const message = await deviceServices.buyProduct();
 
-    const { data } = message;
+//     const { data } = message;
 
-    console.log(data);
+//     console.log(data);
 
-    if (data.user.accessToken) {
-      dispatch({
-        type: userConstants.USER_AUTHORIZE,
-        payload: data,
-      });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
+//     if (data.user.accessToken) {
+//       dispatch({
+//         type: userConstants.USER_AUTHORIZE,
+//         payload: data,
+//       });
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };

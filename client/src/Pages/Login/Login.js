@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as routes from "../../Constants/routes";
 import * as userAction from "../../Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
+import { validation } from "../../Utils/validation";
 
 const styles = {
   login: {
@@ -137,33 +138,39 @@ const styles = {
 const Login = ({ classes }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [uiError, setUiError] = useState("");
 
   const navigate = useNavigate();
 
   const userLoginData = useSelector((state) => state.userLogin);
   const userAuthData = useSelector((state) => state.userInfo);
 
-  const { isAuthorized, isAuthenticated, isAdmin } = userAuthData;
+  const { isAuthenticated } = userAuthData;
   const { error } = userLoginData;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isAuthorized) {
-      return navigate(routes.DASHBOARD);
-    }
+    // if (isAuthorized) {
+    //   return navigate(routes.DASHBOARD);
+    // }
 
-    if (isAdmin) {
-      return navigate(routes.ADMIN);
-    }
+    // if (isAdmin) {
+    //   return navigate(routes.ADMIN);
+    // }
 
     if (isAuthenticated) {
-      navigate(routes.HOME);
+      navigate(routes.DASHBOARD);
     }
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Client Validation
+    const errors = validation(email, password, setUiError);
+
+    if (errors) return setUiError(errors);
 
     // Dispatch action
     dispatch(userAction.login(email, password));
@@ -193,7 +200,7 @@ const Login = ({ classes }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <div className="error-field">{error ? error.email : ""}</div>
+              <div className="error-field">{uiError ? uiError.email : ""}</div>
             </div>
             <div className="input-field">
               <label htmlFor="password">Password:</label>
@@ -205,7 +212,10 @@ const Login = ({ classes }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <div className="error-field">{error ? error.password : ""}</div>
+              <div className="error-field">
+                {uiError ? uiError.password : ""}
+                {error ? error.message : ""}
+              </div>
             </div>
             <div
               className="submit-field"

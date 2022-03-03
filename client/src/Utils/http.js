@@ -11,7 +11,7 @@ const instance = axios.create({
 
 const get = (
   url,
-  { params = {}, accessToken = false, body = {}, headers = {} } = {}
+  { params = {}, body = {}, accessToken = false, headers = {} } = {}
 ) => {
   const authHeaders = {};
 
@@ -30,12 +30,12 @@ const get = (
 
 const post = (
   url,
-  { params = {}, accessToken = false, body = {}, headers = {} } = {}
+  { params = {}, body = {}, accessToken = false, headers = {} } = {}
 ) => {
   const authHeaders = {};
 
   if (accessToken) {
-    authHeaders["Authorization"] = `${tokenService.getAccessToken()}`;
+    authHeaders["Authorization"] = `Bearer ${tokenService.getAccessToken()}`;
   }
 
   return instance({
