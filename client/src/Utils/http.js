@@ -16,7 +16,7 @@ const get = (
   const authHeaders = {};
 
   if (accessToken) {
-    authHeaders["Authorization"] = `${tokenService.getAccessToken()}`;
+    authHeaders["Authorization"] = `Bearer ${tokenService.getAccessToken()}`;
   }
 
   return instance({
@@ -57,7 +57,7 @@ const patch = (
 
   if (accessToken) {
     console.log("token set");
-    authHeaders["Authorization"] = `${tokenService.getAccessToken()}`;
+    authHeaders["Authorization"] = `Bearer ${tokenService.getAccessToken()}`;
   }
 
   return instance({

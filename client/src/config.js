@@ -6,9 +6,9 @@ const config = {
       login: "/auth/login",
       create: "/signup",
     },
-    // device: {
-    //   buyProduct: "/devices/buy",
-    // },
+    device: {
+      getAppliances: "/appliance/auth",
+    },
   },
   apiEndPoints: {
     user: {

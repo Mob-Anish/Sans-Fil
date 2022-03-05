@@ -1,8 +1,9 @@
 import config from "../config";
 import http from "../Utils/http";
 
-export const buyProduct = async () => {
-  const { data } = await http.patch(config.apiEndPoint.device.buyProduct, {
+// Get user appliances
+export const getAppliances = async () => {
+  const { data } = await http.get(config.apiEndPoint.device.getAppliances, {
     accessToken: true,
   });
 

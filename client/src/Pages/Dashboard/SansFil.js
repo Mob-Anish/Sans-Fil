@@ -11,9 +11,13 @@ import noProf from "../../Assets/img/no-prof.png";
 import { useDispatch, useSelector } from "react-redux";
 // import * as userConstants from "../../Constants/userConstants";
 import * as userAction from "../../Actions/userActions";
+import * as deviceAction from "../../Actions/deviceActions";
 import * as getDate from "../../Utils/date";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as routes from "../../Constants/routes";
+import Appliance from "../../Components/Appliance/appliance";
+import Timer from "../../Components/Timer/timer";
+import Setting from "../../Components/Setting/setting";
 
 const styles = {
   dashboard: {
@@ -62,6 +66,12 @@ const styles = {
                 borderTopRightRadius: "3rem",
                 borderBottomRightRadius: "3rem",
                 marginBottom: "1.5rem",
+                "&.active": {
+                  background: "red",
+                  "& svg": {
+                    color: "#ffffff",
+                  },
+                },
                 "& h2": {
                   fontSize: "2rem",
                   paddingLeft: "3.5rem",
@@ -138,7 +148,7 @@ const styles = {
             },
           },
         },
-        "& .content-holder": {
+        "& .dashboard--content__holder": {
           padding: "2.5rem",
           "& .title": {
             marginBottom: "3rem",
@@ -176,29 +186,36 @@ const styles = {
 };
 
 const mergeSideBar = () => {
-  console.log("hello");
   document.querySelector(".content").classList.toggle("collapsed");
 };
 
 const Dashboard = ({ classes }) => {
+  const [appliances, setAppliances] = useState("");
+  const [dashboard, setDashboard] = useState("true");
+  const [timer, setTimer] = useState("");
+  const [setting, setSetting] = useState("");
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
-  // const userAuthData = useSelector((state) => state.userInfo);
-
-  // const { isAuthorized } = userAuthData;
+  const deviceData = useSelector((state) => state.deviceList);
 
   // useEffect(() => {
-  //   if (!isAuthorized) {
-  //     navigate(routes.HOME);
-  //   }
+  //   dispatch(deviceAction.getAppliances());
   // });
 
   // OnClick logout event
   const logout = () => {
     dispatch(userAction.logout());
     navigate(routes.HOME);
+  };
+
+  const getAppliance = () => {
+    setAppliances("true");
+    setDashboard("");
+    setTimer("");
+    setSetting("");
   };
 
   return (
@@ -212,15 +229,18 @@ const Dashboard = ({ classes }) => {
             </div>
             <div className="menu-bar">
               <ul>
-                <li>
+                <li
+                  onClick={getAppliance}
+                  className={appliances ? "active" : "appliances"}
+                >
                   <HiOutlineLightBulb />
                   <h2>Appliances</h2>
                 </li>
-                <li>
+                <li className={timer ? "active" : "appliances"}>
                   <BiTime />
                   <h2>Timer</h2>
                 </li>
-                <li>
+                <li className={setting ? "active" : "appliances"}>
                   <FiSettings />
                   <h2>Setting</h2>
                 </li>
@@ -253,16 +273,23 @@ const Dashboard = ({ classes }) => {
               </div>
             </div>
           </div>
-          <div className="content-holder">
-            <h1 className="title">Today's Report</h1>
-            <div className="card">
-              <div className="appliances">
-                <GoLightBulb />
-                <h2>Appliances Connected</h2>
+          {dashboard ? (
+            <div className="dashboard--content__holder">
+              <h1 className="title">Today's Report</h1>
+              <div className="card">
+                <div className="appliances">
+                  <GoLightBulb />
+                  <h2>Appliances Connected</h2>
+                </div>
+                <h2 className="number">2</h2>
               </div>
-              <h2 className="number">2</h2>
             </div>
-          </div>
+          ) : (
+            ""
+          )}
+          {appliances ? <Appliance /> : ""}
+          {timer ? <Timer /> : ""}
+          {setting ? <Setting /> : ""}
         </div>
       </div>
     </div>
