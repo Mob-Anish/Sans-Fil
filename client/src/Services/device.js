@@ -9,3 +9,13 @@ export const getAppliances = async () => {
 
   return data;
 };
+
+// Update user appliances
+export const updateAppliance = async (body) => {
+  const { data } = await http.put(config.apiEndPoint.device.updateAppliances, {
+    body,
+    accessToken: true,
+  });
+
+  return data;
+};

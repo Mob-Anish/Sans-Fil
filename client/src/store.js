@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 import { userLogin, userRegister, userInfo } from "./Reducers/userReducers";
-import { deviceList } from "./Reducers/deviceReducers";
+import { deviceList, deviceState } from "./Reducers/deviceReducers";
 
 const initialState = {};
 
@@ -10,6 +10,7 @@ const rootReducer = combineReducers({
   userRegister,
   userInfo,
   deviceList,
+  deviceState,
 });
 
 // For redux dev tools

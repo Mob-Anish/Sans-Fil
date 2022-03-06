@@ -3,6 +3,7 @@ import { MdWidgets } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { BiTime } from "react-icons/bi";
 import { GoLightBulb } from "react-icons/go";
+import { ImPower } from "react-icons/im";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { BiBookmark } from "react-icons/bi";
@@ -18,6 +19,8 @@ import * as routes from "../../Constants/routes";
 import Appliance from "../../Components/Appliance/appliance";
 import Timer from "../../Components/Timer/timer";
 import Setting from "../../Components/Setting/setting";
+import AboutUs from "../../Components/AboutUs/aboutUs";
+import Power from "../../Components/Power Consumption/power";
 
 const styles = {
   dashboard: {
@@ -194,6 +197,8 @@ const Dashboard = ({ classes }) => {
   const [dashboard, setDashboard] = useState("true");
   const [timer, setTimer] = useState("");
   const [setting, setSetting] = useState("");
+  const [aboutUs, setAboutUs] = useState("");
+  const [power, setPower] = useState("");
 
   const navigate = useNavigate();
 
@@ -201,9 +206,9 @@ const Dashboard = ({ classes }) => {
 
   const deviceData = useSelector((state) => state.deviceList);
 
-  // useEffect(() => {
-  //   dispatch(deviceAction.getAppliances());
-  // });
+  useEffect(() => {
+    dispatch(deviceAction.getAppliances());
+  }, []);
 
   // OnClick logout event
   const logout = () => {
@@ -211,11 +216,50 @@ const Dashboard = ({ classes }) => {
     navigate(routes.HOME);
   };
 
-  const getAppliance = () => {
+  const getAppliance = (e) => {
     setAppliances("true");
     setDashboard("");
     setTimer("");
     setSetting("");
+    setAboutUs("");
+    setPower("");
+  };
+
+  const getTimer = () => {
+    setAppliances("");
+    setDashboard("");
+    setTimer("true");
+    setSetting("");
+    setAboutUs("");
+    setAboutUs("");
+    setPower("");
+  };
+
+  const getSetting = () => {
+    setAppliances("");
+    setDashboard("");
+    setTimer("");
+    setSetting("true");
+    setAboutUs("");
+    setPower("");
+  };
+
+  const getAboutUs = () => {
+    setAppliances("");
+    setDashboard("");
+    setTimer("");
+    setSetting("");
+    setAboutUs("true");
+    setPower("");
+  };
+
+  const getPower = () => {
+    setAppliances("");
+    setDashboard("");
+    setTimer("");
+    setSetting("");
+    setAboutUs("");
+    setPower("true");
   };
 
   return (
@@ -230,21 +274,42 @@ const Dashboard = ({ classes }) => {
             <div className="menu-bar">
               <ul>
                 <li
+                  key={Math.random()}
                   onClick={getAppliance}
                   className={appliances ? "active" : "appliances"}
                 >
                   <HiOutlineLightBulb />
                   <h2>Appliances</h2>
                 </li>
-                <li className={timer ? "active" : "appliances"}>
+                <li
+                  key={Math.random()}
+                  onClick={getPower}
+                  className={power ? "active" : "power"}
+                >
+                  <ImPower />
+                  <h2>Power Usage</h2>
+                </li>
+                <li
+                  key={Math.random()}
+                  onClick={getTimer}
+                  className={timer ? "active" : "timer"}
+                >
                   <BiTime />
                   <h2>Timer</h2>
                 </li>
-                <li className={setting ? "active" : "appliances"}>
+                <li
+                  key={Math.random()}
+                  onClick={getSetting}
+                  className={setting ? "active" : "setting"}
+                >
                   <FiSettings />
                   <h2>Setting</h2>
                 </li>
-                <li>
+                <li
+                  key={Math.random()}
+                  onClick={getAboutUs}
+                  className={aboutUs ? "active" : "aboutus"}
+                >
                   <BiBookmark />
                   <h2>About Us</h2>
                 </li>
@@ -288,8 +353,10 @@ const Dashboard = ({ classes }) => {
             ""
           )}
           {appliances ? <Appliance /> : ""}
+          {power ? <Power /> : ""}
           {timer ? <Timer /> : ""}
           {setting ? <Setting /> : ""}
+          {aboutUs ? <AboutUs /> : ""}
         </div>
       </div>
     </div>

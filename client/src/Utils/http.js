@@ -69,11 +69,36 @@ const patch = (
   }).then((response) => response);
 };
 
+const put = (
+  url,
+  { params = {}, accessToken = false, body = {}, headers = {} } = {}
+) => {
+  const authHeaders = {};
+
+  console.log(body);
+
+  console.log(accessToken);
+
+  if (accessToken) {
+    console.log("token set");
+    authHeaders["Authorization"] = `Bearer ${tokenService.getAccessToken()}`;
+  }
+
+  return instance({
+    url,
+    params,
+    data: body,
+    method: "put",
+    headers: { ...authHeaders, ...headers },
+  }).then((response) => response);
+};
+
 const http = {
   instance,
   get,
   post,
   patch,
+  put,
 };
 
 export default http;

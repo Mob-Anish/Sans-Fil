@@ -14,10 +14,33 @@ export const getAppliances = () => async (dispatch) => {
       type: deviceConstants.DEVICELIST_FETCH_SUCCESS,
       payload: data,
     });
-
-    console.log(deviceInfo);
   } catch (err) {
     console.log(err);
     dispatch({ type: deviceConstants.DEVICELIST_FETCH_FAIL });
+  }
+};
+
+export const updateAppliance = (id, isOn) => async (dispatch) => {
+  try {
+    dispatch({ type: deviceConstants.DEVICESTATE_UPDATE_START });
+
+    const body = {
+      id,
+      isOn,
+    };
+
+    console.log(body);
+
+    const deviceInfo = await deviceServices.updateAppliance(body);
+
+    const { data } = deviceInfo;
+
+    dispatch({
+      type: deviceConstants.DEVICESTATE_UPDATE_SUCCESS,
+      payload: data,
+    });
+  } catch (err) {
+    console.log(err);
+    dispatch({ type: deviceConstants.DEVICESTATE_UPDATE_FAIL });
   }
 };
