@@ -9,6 +9,7 @@ const config = {
     device: {
       getAppliances: "/appliance/auth",
       updateAppliances: "/appliance/updateState",
+      getAppliancesLog: "/appliance/auth-appliancesLog",
     },
   },
   apiEndPoints: {

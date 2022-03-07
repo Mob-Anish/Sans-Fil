@@ -1,0 +1,45 @@
+.power--container {
+  padding: 3.5rem 2.5rem;
+}
+
+.power--container .content-holder {
+  padding: 3rem 3rem;
+}
+
+.power--container .img-holder {
+  height: 7rem;
+  width: 7rem;
+  margin-right: 2rem;
+}
+
+.power--container .img-holder .bg-image {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.power--container .energy-card {
+  background-color: red;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.power--container .energy-card .device-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.power--container .energy-card:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.power--container .energy-card .image {
+  display: flex;
+  align-items: center;
+}

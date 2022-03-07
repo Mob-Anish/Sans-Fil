@@ -17,7 +17,8 @@ export const deviceList = (state = { devices: [] }, action) => {
       return {
         error: action.payload,
       };
-
+    case deviceConstants.DEVICELIST_RESET:
+      return {};
     default:
       return state;
   }
@@ -38,7 +39,26 @@ export const deviceState = (state = { device: [] }, action) => {
       return {
         error: action.payload,
       };
+    default:
+      return state;
+  }
+};
 
+export const applianceLog = (state = { logs: [] }, action) => {
+  switch (action.type) {
+    case deviceConstants.DEVICE_APPLIANCE_LOGS_START:
+      return {
+        loading: true,
+      };
+    case deviceConstants.DEVICE_APPLIANCE_LOGS_SUCCESS:
+      return {
+        applianceLog: action.payload,
+        success: true,
+      };
+    case deviceConstants.DEVICE_APPLIANCE_LOGS_FAIL:
+      return {
+        error: action.payload,
+      };
     default:
       return state;
   }

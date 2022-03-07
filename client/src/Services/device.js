@@ -19,3 +19,14 @@ export const updateAppliance = async (body) => {
 
   return data;
 };
+
+export const getApplianceLog = async (body) => {
+  const { data } = await http.get(
+    config.apiEndPoint.device.getAppliancesLog + `?selectedDate=2022-03-03`,
+    {
+      accessToken: true,
+    }
+  );
+
+  return data;
+};

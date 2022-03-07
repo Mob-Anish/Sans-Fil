@@ -44,3 +44,21 @@ export const updateAppliance = (id, isOn) => async (dispatch) => {
     dispatch({ type: deviceConstants.DEVICESTATE_UPDATE_FAIL });
   }
 };
+
+export const getApplianceLogs = () => async (dispatch) => {
+  try {
+    dispatch({ type: deviceConstants.DEVICE_APPLIANCE_LOGS_START });
+
+    const applianceLog = await deviceServices.getApplianceLog();
+
+    const { data } = applianceLog;
+
+    dispatch({
+      type: deviceConstants.DEVICE_APPLIANCE_LOGS_SUCCESS,
+      payload: data,
+    });
+  } catch (err) {
+    console.log(err);
+    dispatch({ type: deviceConstants.DEVICE_APPLIANCE_LOGS_FAIL });
+  }
+};

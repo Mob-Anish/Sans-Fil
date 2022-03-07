@@ -208,6 +208,7 @@ const Dashboard = ({ classes }) => {
 
   useEffect(() => {
     dispatch(deviceAction.getAppliances());
+    dispatch(deviceAction.getApplianceLogs());
   }, []);
 
   // OnClick logout event
@@ -287,7 +288,7 @@ const Dashboard = ({ classes }) => {
                   className={power ? "active" : "power"}
                 >
                   <ImPower />
-                  <h2>Power Usage</h2>
+                  <h2>Energy Usage</h2>
                 </li>
                 <li
                   key={Math.random()}
