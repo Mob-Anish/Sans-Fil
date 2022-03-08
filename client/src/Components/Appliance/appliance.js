@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./appliance.css";
 import Switch from "@material-ui/core/Switch";
-// import { useState } from "react";
+import { useState } from "react";
 import * as deviceAction from "../../Actions/deviceActions";
 // import { useEffect } from "react";
 
 const appliance = () => {
-  // const [devState, setDevState] = useState("");
+  const [devState, setDevState] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -16,12 +16,32 @@ const appliance = () => {
   const { devices } = deviceData;
   const { appliance } = deviceState;
 
+  console.log(devState);
+
+  // useEffect(() => {
+  //   dispatch(deviceAction.getAppliances());
+  // }, []);
+
+  // useEffect(() => {
+  //   if (appliance) {
+  //     setDevState([
+  //       ...devState,
+  //       {
+  //         appliance,
+  //       },
+  //     ]);
+  //   }
+  // }, [appliance]);
+
   // if (devices) console.log(devices);
   // if (appliance) console.log(appliance);
 
   const handleToggleEvent = (id, isOn) => {
     if (isOn) dispatch(deviceAction.updateAppliance(id, false));
     if (!isOn) dispatch(deviceAction.updateAppliance(id, true));
+    setTimeout(() => {
+      dispatch(deviceAction.getAppliances());
+    }, 500);
   };
 
   // useEffect(() => {
@@ -49,10 +69,17 @@ const appliance = () => {
                   ></div>
                 </div>
                 <Switch
-                  onChange={() => handleToggleEvent(device._id, device.isOn)}
+                  onChange={() =>
+                    handleToggleEvent(
+                      device._id,
+                      appliance && device._id == appliance._id
+                        ? appliance.isOn
+                        : device.isOn
+                    )
+                  }
                   edge="end"
                   checked={
-                    appliance && device._id == appliance._id
+                    appliance && appliance._id === device._id
                       ? appliance.isOn
                       : device.isOn
                   }

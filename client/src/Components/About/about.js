@@ -10,11 +10,13 @@ const about = () => {
           <div className="bg-image"></div>
         </div>
         <div className="content">
-          <span style={{ fontSize: "2.5rem" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat
+          <span style={{ fontSize: "2.5rem", textAlign: "justify" }}>
+            SansFil is an wireless home automation system applied in any
+            appliances of your personal home. It will provide a smooth user
+            experience and portability to the user through the wireless
+            connection. You can connect to any appliance that need the
+            electricity supply. We will provide both mobile and web application
+            where you can easily connect to your devices through it.
           </span>
         </div>
       </div>

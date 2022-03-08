@@ -29,8 +29,6 @@ export const updateAppliance = (id, isOn) => async (dispatch) => {
       isOn,
     };
 
-    console.log(body);
-
     const deviceInfo = await deviceServices.updateAppliance(body);
 
     const { data } = deviceInfo;

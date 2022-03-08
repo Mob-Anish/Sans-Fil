@@ -1,13 +1,18 @@
 import "./power.css";
 import { useSelector, useDispatch } from "react-redux";
-import ImageBulb from "../../Assets/img/bulb.png";
+// import * as deviceAction from "../../Actions/deviceActions";
+// import { useEffect } from "react";
 
 const power = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const logReport = useSelector((state) => state.applianceLog);
 
   const { applianceLog } = logReport;
+
+  // useEffect(() => {
+  //   dispatch(deviceAction.getApplianceLogs());
+  // }, []);
 
   console.log(applianceLog);
 

@@ -205,6 +205,9 @@ const Dashboard = ({ classes }) => {
   const dispatch = useDispatch();
 
   const deviceData = useSelector((state) => state.deviceList);
+  const userData = useSelector((state) => state.userInfo);
+
+  const { userInfo } = userData;
 
   useEffect(() => {
     dispatch(deviceAction.getAppliances());
@@ -330,7 +333,7 @@ const Dashboard = ({ classes }) => {
               <div className="img-holder">
                 <div className="background-image"></div>
               </div>
-              <h1 className="name">Anish Manandhar</h1>
+              <h1 className="name">{userInfo.name}</h1>
               <div className="prof-dropdown">
                 <h2 style={{ padding: "1.3rem 6rem" }}>Profile</h2>
                 <h2 style={{ padding: "1.3rem 6rem" }} onClick={logout}>

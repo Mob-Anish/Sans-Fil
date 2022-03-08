@@ -31,6 +31,7 @@ export const deviceState = (state = { device: [] }, action) => {
         loading: true,
       };
     case deviceConstants.DEVICESTATE_UPDATE_SUCCESS:
+      // console.log(...state.device);
       return {
         appliance: action.payload,
         success: true,
