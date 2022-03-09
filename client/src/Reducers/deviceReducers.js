@@ -13,33 +13,26 @@ export const deviceList = (state = { devices: [] }, action) => {
         count: action.payload.length,
         success: true,
       };
+    case deviceConstants.DEVICESTATE_UPDATE:
+      const item = action.payload;
+
+      const mapData = state.devices.map((device) =>
+        device._id === item._id ? item : device
+      );
+
+      return {
+        devices: mapData,
+      };
+    case deviceConstants.DEVICESTATE_UPDATE_FAIL:
+      return {
+        error: action.payload,
+      };
     case deviceConstants.DEVICELIST_FETCH_FAIL:
       return {
         error: action.payload,
       };
     case deviceConstants.DEVICELIST_RESET:
       return {};
-    default:
-      return state;
-  }
-};
-
-export const deviceState = (state = { device: [] }, action) => {
-  switch (action.type) {
-    case deviceConstants.DEVICESTATE_UPDATE_START:
-      return {
-        loading: true,
-      };
-    case deviceConstants.DEVICESTATE_UPDATE_SUCCESS:
-      // console.log(...state.device);
-      return {
-        appliance: action.payload,
-        success: true,
-      };
-    case deviceConstants.DEVICESTATE_UPDATE_FAIL:
-      return {
-        error: action.payload,
-      };
     default:
       return state;
   }

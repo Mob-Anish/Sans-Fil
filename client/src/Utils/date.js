@@ -22,3 +22,10 @@ export const getDay = () => {
 };
 export const getMonth = months[date.getMonth()];
 export const getYear = date.getFullYear();
+
+export const getYearAndMonth = (data) => {
+  const index = months.indexOf(data) + 1;
+  return index;
+};
+
+export const getCurrentMonth = date.getMonth() + 1;

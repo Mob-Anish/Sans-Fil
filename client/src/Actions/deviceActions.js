@@ -22,8 +22,6 @@ export const getAppliances = () => async (dispatch) => {
 
 export const updateAppliance = (id, isOn) => async (dispatch) => {
   try {
-    dispatch({ type: deviceConstants.DEVICESTATE_UPDATE_START });
-
     const body = {
       id,
       isOn,
@@ -34,7 +32,7 @@ export const updateAppliance = (id, isOn) => async (dispatch) => {
     const { data } = deviceInfo;
 
     dispatch({
-      type: deviceConstants.DEVICESTATE_UPDATE_SUCCESS,
+      type: deviceConstants.DEVICESTATE_UPDATE,
       payload: data,
     });
   } catch (err) {
@@ -43,11 +41,11 @@ export const updateAppliance = (id, isOn) => async (dispatch) => {
   }
 };
 
-export const getApplianceLogs = () => async (dispatch) => {
+export const getApplianceLogs = (year, month) => async (dispatch) => {
   try {
     dispatch({ type: deviceConstants.DEVICE_APPLIANCE_LOGS_START });
 
-    const applianceLog = await deviceServices.getApplianceLog();
+    const applianceLog = await deviceServices.getApplianceLog(year, month);
 
     const { data } = applianceLog;
 

@@ -20,9 +20,10 @@ export const updateAppliance = async (body) => {
   return data;
 };
 
-export const getApplianceLog = async (body) => {
+export const getApplianceLog = async (year, month) => {
   const { data } = await http.get(
-    config.apiEndPoint.device.getAppliancesLog + `?selectedDate=2022-03-03`,
+    config.apiEndPoint.device.getAppliancesLog +
+      `?selectedDate=${year}-${month}`,
     {
       accessToken: true,
     }

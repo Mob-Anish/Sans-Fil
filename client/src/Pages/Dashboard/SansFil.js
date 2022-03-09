@@ -21,6 +21,7 @@ import Timer from "../../Components/Timer/timer";
 import Setting from "../../Components/Setting/setting";
 import AboutUs from "../../Components/AboutUs/aboutUs";
 import Power from "../../Components/Power Consumption/power";
+import { getYear, getCurrentMonth } from "../../Utils/date";
 
 const styles = {
   dashboard: {
@@ -204,14 +205,14 @@ const Dashboard = ({ classes }) => {
 
   const dispatch = useDispatch();
 
-  const deviceData = useSelector((state) => state.deviceList);
+  // const deviceData = useSelector((state) => state.deviceList);
   const userData = useSelector((state) => state.userInfo);
 
   const { userInfo } = userData;
 
   useEffect(() => {
     dispatch(deviceAction.getAppliances());
-    dispatch(deviceAction.getApplianceLogs());
+    dispatch(deviceAction.getApplianceLogs(getYear, getCurrentMonth));
   }, []);
 
   // OnClick logout event
