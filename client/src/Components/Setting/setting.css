@@ -1,3 +1,79 @@
 .setting--container {
   padding: 3.5rem 2.5rem;
 }
+
+.setting--container .input-holder {
+  width: 50%;
+}
+
+.setting--container .input-field {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.setting--container .content-holder {
+  display: flex;
+  padding: 4rem;
+}
+
+.setting--container .input-field:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.setting--container .input-field label {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.setting--container .input-field input {
+  padding: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.8rem;
+}
+
+.setting--container .input-field input:focus {
+  outline: none;
+}
+
+.setting--container .add-appliance {
+  font-size: 1.6rem;
+  padding: 1.5rem 2rem;
+  color: #ffffff;
+  border: none;
+  background: purple;
+  border-radius: 3rem;
+  cursor: pointer;
+  font-family: Quicksand;
+  transition: transform 0.3s ease-out;
+}
+
+.setting--container .content-holder .import-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.setting--container .content-holder .import-image .image1 {
+  padding: 5rem 2rem;
+  border: 1px dashed #000000;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.setting--container .content-holder .import-image .image2 {
+  padding: 5rem 2rem;
+  border: 1px dashed #000000;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -26,7 +26,7 @@ import { getYear, getCurrentMonth } from "../../Utils/date";
 const styles = {
   dashboard: {
     height: "100vh",
-    background: "#e76305",
+    background: "#E6E6EA",
     padding: "6rem",
     "& .content": {
       height: "100%",
@@ -93,7 +93,7 @@ const styles = {
       },
       "& .dashboard-container": {
         width: "calc(100% - 32rem)",
-        background: "#f3f3f4",
+        background: "#F3F3F4",
         borderTopRightRadius: "2rem",
         borderBottomRightRadius: "2rem",
         "& .header": {
