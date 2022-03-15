@@ -1,5 +1,4 @@
 import * as deviceServices from "../Services/device";
-import * as tokenSystem from "../Services/token";
 import * as deviceConstants from "../Constants/deviceConstants";
 
 export const getAppliances = () => async (dispatch) => {
@@ -37,9 +36,25 @@ export const updateAppliance = (id, isOn) => async (dispatch) => {
     });
   } catch (err) {
     console.log(err);
-    dispatch({ type: deviceConstants.DEVICESTATE_UPDATE_FAIL });
   }
 };
+
+// Add appliance
+export const createAppliance =
+  (formData) => async (dispatch) => {
+    try {
+      const deviceInfo = await deviceServices.createAppliance(formData);
+
+      const { data } = deviceInfo;
+
+      dispatch({
+        type: deviceConstants.DEVICELIST_ADD_SUCCESS,
+        payload: data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
 export const getApplianceLogs = (year, month) => async (dispatch) => {
   try {

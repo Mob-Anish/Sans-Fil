@@ -205,7 +205,8 @@ const Dashboard = ({ classes }) => {
 
   const dispatch = useDispatch();
 
-  // const deviceData = useSelector((state) => state.deviceList);
+  const deviceData = useSelector((state) => state.deviceList);
+  const { count } = deviceData;
   const userData = useSelector((state) => state.userInfo);
 
   const { userInfo } = userData;
@@ -328,7 +329,9 @@ const Dashboard = ({ classes }) => {
               <h2 className="date" style={{ color: "#D158C5" }}>
                 {`${getDate.getDay()} ${getDate.getMonth} ${getDate.getYear}`}
               </h2>
-              <h1 className="respect">Good Morning 😎😎</h1>
+              <h1 className="respect">
+                Welcome {userInfo.name} to the smart home 😎😎
+              </h1>
             </div>
             <div className="profile-holder">
               <div className="img-holder">
@@ -351,7 +354,7 @@ const Dashboard = ({ classes }) => {
                   <GoLightBulb />
                   <h2>Appliances Connected</h2>
                 </div>
-                <h2 className="number">2</h2>
+                <h2 className="number">{count}</h2>
               </div>
             </div>
           ) : (

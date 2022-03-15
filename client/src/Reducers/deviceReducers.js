@@ -23,13 +23,15 @@ export const deviceList = (state = { devices: [] }, action) => {
       return {
         devices: mapData,
       };
-    case deviceConstants.DEVICESTATE_UPDATE_FAIL:
-      return {
-        error: action.payload,
-      };
     case deviceConstants.DEVICELIST_FETCH_FAIL:
       return {
         error: action.payload,
+      };
+    case deviceConstants.DEVICELIST_ADD_SUCCESS:
+      return {
+        devices: [...state.devices, action.payload],
+        count: action.payload.length + 1,
+        success: true,
       };
     case deviceConstants.DEVICELIST_RESET:
       return {};

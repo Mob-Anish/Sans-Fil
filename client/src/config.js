@@ -8,7 +8,8 @@ const config = {
     },
     device: {
       getAppliances: "/appliance/auth",
-      updateAppliances: "/appliance/updateState",
+      updateAppliance: "/appliance/updateState",
+      createAppliance: "/appliance/",
       getAppliancesLog: "/appliance/auth-appliancesLog",
     },
   },

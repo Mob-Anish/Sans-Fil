@@ -12,7 +12,17 @@ export const getAppliances = async () => {
 
 // Update user appliances
 export const updateAppliance = async (body) => {
-  const { data } = await http.put(config.apiEndPoint.device.updateAppliances, {
+  const { data } = await http.put(config.apiEndPoint.device.updateAppliance, {
+    body,
+    accessToken: true,
+  });
+
+  return data;
+};
+
+// Create user appliances
+export const createAppliance = async (body) => {
+  const { data } = await http.post(config.apiEndPoint.device.createAppliance, {
     body,
     accessToken: true,
   });
