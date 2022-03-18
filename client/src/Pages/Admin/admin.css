@@ -1,0 +1,3 @@
+.collapsed .admin-container {
+  width: calc(100% - 9.5rem) !important;
+}

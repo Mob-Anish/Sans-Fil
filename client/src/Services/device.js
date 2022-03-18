@@ -41,3 +41,25 @@ export const getApplianceLog = async (year, month) => {
 
   return data;
 };
+
+export const getUnverifiedDevices = async () => {
+  const { data } = await http.get(
+    config.apiEndPoint.device.getUnverfiedDevice,
+    {
+      accessToken: true,
+    }
+  );
+
+  return data;
+};
+
+export const verifyAppliance = async (applianceId) => {
+  const { data } = await http.get(
+    config.apiEndPoint.device.verifyAppliance + `/${applianceId}`,
+    {
+      accessToken: true,
+    }
+  );
+
+  return data;
+};

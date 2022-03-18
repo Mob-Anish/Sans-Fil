@@ -29,8 +29,6 @@ export const deviceList = (state = { devices: [] }, action) => {
       };
     case deviceConstants.DEVICELIST_ADD_SUCCESS:
       return {
-        devices: [...state.devices, action.payload],
-        count: action.payload.length + 1,
         success: true,
       };
     case deviceConstants.DEVICELIST_RESET:
@@ -55,6 +53,38 @@ export const applianceLog = (state = { logs: [] }, action) => {
       return {
         error: action.payload,
       };
+    default:
+      return state;
+  }
+};
+
+export const unverifiedDeviceList = (state = { devices: [] }, action) => {
+  switch (action.type) {
+    case deviceConstants.UNVERIFIED_DEVICELIST_FETCH_START:
+      return {
+        loading: true,
+      };
+    case deviceConstants.UNVERIFIED_DEVICELIST_FETCH_SUCCESS:
+      return {
+        devices: action.payload,
+        count: action.payload.length,
+        success: true,
+      };
+    case deviceConstants.UNVERIFIED_DEVICE_UPDATE:
+      const item = action.payload;
+
+      const mapData = state.devices.map((device) =>
+        device._id === item._id ? item : device
+      );
+
+      return {
+        devices: mapData,
+      };
+    case deviceConstants.UNVERIFIED_DEVICELIST_FETCH_FAIL:
+      return {
+        error: action.payload,
+      };
+
     default:
       return state;
   }

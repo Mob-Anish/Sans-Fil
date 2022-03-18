@@ -28,6 +28,9 @@ const setting = () => {
     formData.append("image1", uploadOffImage);
     formData.append("image2", uploadOnImage);
     dispatch(deviceAction.createAppliance(formData));
+    setApplianceName("");
+    setPower("");
+    setPin("");
   };
 
   return (

@@ -84,19 +84,29 @@ export const userInfo = (state = initialState, action) => {
   }
 };
 
-export const userList = (state = { users: [] }, action) => {
+export const unverifiedUserList = (state = { users: [] }, action) => {
   switch (action.type) {
-    case userConstants.USERLIST_FETCH_START:
+    case userConstants.UNVERIFIED_USERLIST_FETCH_START:
       return {
         loading: true,
       };
-    case userConstants.USERLIST_FETCH_SUCCESS:
+    case userConstants.UNVERIFIED_USERLIST_FETCH_SUCCESS:
       return {
-        users: action.payload.results,
-        count: action.payload.count,
+        users: action.payload,
+        count: action.payload.length,
         success: true,
       };
-    case userConstants.USERLIST_FETCH_FAIL:
+    case userConstants.UNVERIFIED_USER_UPDATE:
+      const item = action.payload;
+
+      const mapData = state.users.map((user) =>
+        user._id === item._id ? item : user
+      );
+
+      return {
+        users: mapData,
+      };
+    case userConstants.UNVERIFIED_USERLIST_FETCH_FAIL:
       return {
         error: action.payload,
       };

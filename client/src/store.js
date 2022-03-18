@@ -1,15 +1,26 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
-import { userLogin, userRegister, userInfo } from "./Reducers/userReducers";
-import { deviceList, applianceLog } from "./Reducers/deviceReducers";
+import {
+  userLogin,
+  userRegister,
+  userInfo,
+  unverifiedUserList,
+} from "./Reducers/userReducers";
+import {
+  deviceList,
+  applianceLog,
+  unverifiedDeviceList,
+} from "./Reducers/deviceReducers";
 
 const initialState = {};
 
 const rootReducer = combineReducers({
-  userLogin,
   userRegister,
+  userLogin,
   userInfo,
   deviceList,
+  unverifiedDeviceList,
+  unverifiedUserList,
   applianceLog,
 });
 

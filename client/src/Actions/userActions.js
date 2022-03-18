@@ -76,18 +76,18 @@ export const login = (email, password) => async (dispatch) => {
     //   });
     // }
 
-    // If user is admin
-    // if (data.user.role === "admin" && token) {
-    //   dispatch({
-    //     type: userConstants.IS_ADMIN,
-    //     payload: data,
-    //   });
+    //If user is admin
+    if (data.role === "admin" && token) {
+      dispatch({
+        type: userConstants.IS_ADMIN,
+        payload: data,
+      });
 
-    //   return dispatch({
-    //     type: userConstants.USER_AUTH_SUCCESS,
-    //     payload: message,
-    //   });
-    // }
+      return dispatch({
+        type: userConstants.USER_AUTH_SUCCESS,
+        payload: message,
+      });
+    }
 
     // If user has only jwt token
     if (token) {
@@ -141,3 +141,42 @@ export const setCurrentUser = (data) => {
 //     console.log(err);
 //   }
 // };
+
+// Fetch unverified user list
+export const getUnverifiedUser = () => async (dispatch) => {
+  try {
+    dispatch({ type: userConstants.UNVERIFIED_USERLIST_FETCH_START });
+
+    const unverifiedUser = await userServices.getUnverifiedUsers();
+
+    const { data } = unverifiedUser;
+
+    dispatch({
+      type: userConstants.UNVERIFIED_USERLIST_FETCH_SUCCESS,
+      payload: data,
+    });
+  } catch (err) {
+    console.log(err);
+    dispatch({
+      type: userConstants.UNVERIFIED_USERLIST_FETCH_FAIL,
+      payload: handleError(err),
+    });
+  }
+};
+
+// Grant arduino token to user
+export const grantArduinoToken = (userId) => async (dispatch) => {
+  try {
+    const body = {
+      arduinoToken: "03DE11F42DF93724B745A5F3F6DB001A",
+    };
+
+    const verifiedUser = await userServices.grantArduinoToken(body, userId);
+
+    const { data } = verifiedUser;
+
+    dispatch({ type: userConstants.UNVERIFIED_USER_UPDATE, payload: data });
+  } catch (err) {
+    console.log(err);
+  }
+};

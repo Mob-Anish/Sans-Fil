@@ -6,7 +6,6 @@ import { GoLightBulb } from "react-icons/go";
 import { ImPower } from "react-icons/im";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import { BiBookmark } from "react-icons/bi";
 import "./index.css";
 import noProf from "../../Assets/img/no-prof.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +18,6 @@ import * as routes from "../../Constants/routes";
 import Appliance from "../../Components/Appliance/appliance";
 import Timer from "../../Components/Timer/timer";
 import Setting from "../../Components/Setting/setting";
-import AboutUs from "../../Components/AboutUs/aboutUs";
 import Power from "../../Components/Power Consumption/power";
 import { getYear, getCurrentMonth } from "../../Utils/date";
 
@@ -198,7 +196,6 @@ const Dashboard = ({ classes }) => {
   const [dashboard, setDashboard] = useState("true");
   const [timer, setTimer] = useState("");
   const [setting, setSetting] = useState("");
-  const [aboutUs, setAboutUs] = useState("");
   const [power, setPower] = useState("");
 
   const navigate = useNavigate();
@@ -227,7 +224,6 @@ const Dashboard = ({ classes }) => {
     setDashboard("");
     setTimer("");
     setSetting("");
-    setAboutUs("");
     setPower("");
   };
 
@@ -236,8 +232,6 @@ const Dashboard = ({ classes }) => {
     setDashboard("");
     setTimer("true");
     setSetting("");
-    setAboutUs("");
-    setAboutUs("");
     setPower("");
   };
 
@@ -246,16 +240,6 @@ const Dashboard = ({ classes }) => {
     setDashboard("");
     setTimer("");
     setSetting("true");
-    setAboutUs("");
-    setPower("");
-  };
-
-  const getAboutUs = () => {
-    setAppliances("");
-    setDashboard("");
-    setTimer("");
-    setSetting("");
-    setAboutUs("true");
     setPower("");
   };
 
@@ -264,7 +248,6 @@ const Dashboard = ({ classes }) => {
     setDashboard("");
     setTimer("");
     setSetting("");
-    setAboutUs("");
     setPower("true");
   };
 
@@ -311,14 +294,6 @@ const Dashboard = ({ classes }) => {
                   <FiSettings />
                   <h2>Setting</h2>
                 </li>
-                <li
-                  key={Math.random()}
-                  onClick={getAboutUs}
-                  className={aboutUs ? "active" : "aboutus"}
-                >
-                  <BiBookmark />
-                  <h2>About Us</h2>
-                </li>
               </ul>
             </div>
           </div>
@@ -364,7 +339,6 @@ const Dashboard = ({ classes }) => {
           {power ? <Power /> : ""}
           {timer ? <Timer /> : ""}
           {setting ? <Setting /> : ""}
-          {aboutUs ? <AboutUs /> : ""}
         </div>
       </div>
     </div>

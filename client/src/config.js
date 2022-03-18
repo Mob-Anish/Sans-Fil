@@ -5,12 +5,16 @@ const config = {
     user: {
       login: "/auth/login",
       create: "/signup",
+      getUnverfiedUser: "/user/unverified-users",
+      grantArduinoToken: "/user/verify-user",
     },
     device: {
       getAppliances: "/appliance/auth",
       updateAppliance: "/appliance/updateState",
       createAppliance: "/appliance/",
       getAppliancesLog: "/appliance/auth-appliancesLog",
+      getUnverfiedDevice: "/appliance/auth/unverified",
+      verifyAppliance: "/appliance/verify-appliance",
     },
   },
   apiEndPoints: {

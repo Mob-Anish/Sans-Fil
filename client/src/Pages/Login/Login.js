@@ -145,7 +145,8 @@ const Login = ({ classes }) => {
   const userLoginData = useSelector((state) => state.userLogin);
   const userAuthData = useSelector((state) => state.userInfo);
 
-  const { isAuthenticated } = userAuthData;
+  const { isAuthenticated, isAdmin } = userAuthData;
+
   const { error } = userLoginData;
 
   const dispatch = useDispatch();
@@ -155,9 +156,9 @@ const Login = ({ classes }) => {
     //   return navigate(routes.DASHBOARD);
     // }
 
-    // if (isAdmin) {
-    //   return navigate(routes.ADMIN);
-    // }
+    if (isAdmin) {
+      return navigate(routes.ADMIN);
+    }
 
     if (isAuthenticated) {
       navigate(routes.DASHBOARD);
