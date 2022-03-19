@@ -314,7 +314,6 @@ const Dashboard = ({ classes }) => {
               </div>
               <h1 className="name">{userInfo.name}</h1>
               <div className="prof-dropdown">
-                <h2 style={{ padding: "1.3rem 6rem" }}>Profile</h2>
                 <h2 style={{ padding: "1.3rem 6rem" }} onClick={logout}>
                   Logout
                 </h2>

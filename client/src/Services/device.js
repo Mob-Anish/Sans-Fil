@@ -54,8 +54,19 @@ export const getUnverifiedDevices = async () => {
 };
 
 export const verifyAppliance = async (applianceId) => {
-  const { data } = await http.get(
+  const { data } = await http.put(
     config.apiEndPoint.device.verifyAppliance + `/${applianceId}`,
+    {
+      accessToken: true,
+    }
+  );
+
+  return data;
+};
+
+export const deleteAppliance = async (applianceId) => {
+  const { data } = await http.remove(
+    config.apiEndPoint.device.deleteAppliance + `/${applianceId}`,
     {
       accessToken: true,
     }

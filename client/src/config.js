@@ -13,8 +13,9 @@ const config = {
       updateAppliance: "/appliance/updateState",
       createAppliance: "/appliance/",
       getAppliancesLog: "/appliance/auth-appliancesLog",
-      getUnverfiedDevice: "/appliance/auth/unverified",
+      getUnverfiedDevice: "/appliance/unverified-appliances",
       verifyAppliance: "/appliance/verify-appliance",
+      deleteAppliance: "/appliance",
     },
   },
   apiEndPoints: {

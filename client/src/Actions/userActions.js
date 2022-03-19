@@ -85,7 +85,7 @@ export const login = (email, password) => async (dispatch) => {
 
       return dispatch({
         type: userConstants.USER_AUTH_SUCCESS,
-        payload: message,
+        payload: data,
       });
     }
 
@@ -173,9 +173,7 @@ export const grantArduinoToken = (userId) => async (dispatch) => {
 
     const verifiedUser = await userServices.grantArduinoToken(body, userId);
 
-    const { data } = verifiedUser;
-
-    dispatch({ type: userConstants.UNVERIFIED_USER_UPDATE, payload: data });
+    dispatch({ type: userConstants.UNVERIFIED_USER_UPDATE, payload: userId });
   } catch (err) {
     console.log(err);
   }

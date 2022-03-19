@@ -1,3 +1,58 @@
 .users--container {
-    padding: 3.5rem 2.5rem;
-  }
+  padding: 3.5rem 2.5rem;
+}
+
+.users--container .card-body {
+  padding: 2rem;
+  width: 60%;
+}
+
+.users--container .card-body .card {
+  border-radius: 1rem;
+  background: red;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.users--container .card-body .card:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.users--container .card-body .card .img-holder {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}
+
+.users--container .card-body .card .img-holder .bg-image {
+  height: 100%;
+  width: 100%;
+  background-image: url(../../Assets/img/no-prof.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+.users--container .card-body .card .user-content {
+  display: flex;
+  align-items: center;
+}
+
+.users--container .card-body .card .user-content .content-holder {
+  margin-left: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.users--container .card-body .card .button {
+  padding: 1rem;
+  background: white;
+  border-radius: 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}

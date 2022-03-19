@@ -1,3 +1,69 @@
 .devices--container {
-    padding: 3.5rem 2.5rem;
-  }
+  padding: 3.5rem 2.5rem;
+}
+
+.devices--container .card-body {
+  padding: 2rem;
+  width: 60%;
+}
+
+.devices--container .card-body .card {
+  border-radius: 1rem;
+  background: blue;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.devices--container .card-body .card:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.devices--container .card-body .card .img-holder {
+  height: 10rem;
+  width: 10rem;
+}
+
+.devices--container .card-body .card .img-holder .bg-image {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.devices--container .card-body .card .appliance-content {
+  display: flex;
+  align-items: center;
+}
+
+.devices--container .card-body .card .appliance-content .content-holder {
+  margin-left: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.devices--container .card-body .card .button .accept,
+.devices--container .card-body .card .button .reject {
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.devices--container .card-body .card .button {
+  display: flex;
+}
+
+.devices--container .card-body .card .button .accept {
+  margin-right: 1rem;
+  background: rgb(19, 189, 19);
+}
+
+.devices--container .card-body .card .button .reject {
+  background: rgb(214, 30, 30);
+}

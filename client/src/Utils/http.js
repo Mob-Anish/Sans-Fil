@@ -93,12 +93,31 @@ const put = (
   }).then((response) => response);
 };
 
+const remove = (
+  url,
+  { params = {}, accessToken = false, headers = {} } = {}
+) => {
+  const authHeaders = {};
+
+  if (accessToken) {
+    authHeaders["Authorization"] = `Bearer ${tokenService.getAccessToken()}`;
+  }
+
+  return instance({
+    url,
+    params,
+    method: "delete",
+    headers: { ...authHeaders, ...headers },
+  }).then((response) => response);
+};
+
 const http = {
   instance,
   get,
   post,
   patch,
   put,
+  remove,
 };
 
 export default http;

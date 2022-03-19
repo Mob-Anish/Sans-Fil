@@ -97,14 +97,18 @@ export const unverifiedUserList = (state = { users: [] }, action) => {
         success: true,
       };
     case userConstants.UNVERIFIED_USER_UPDATE:
-      const item = action.payload;
+      const userId = action.payload;
+      const orgUsers = state.users;
 
-      const mapData = state.users.map((user) =>
-        user._id === item._id ? item : user
-      );
+      orgUsers.forEach((el, i, arr) => {
+        if (el._id == userId) {
+          arr.splice(i, 1);
+        }
+      });
 
       return {
-        users: mapData,
+        users: orgUsers,
+        count: orgUsers.length,
       };
     case userConstants.UNVERIFIED_USERLIST_FETCH_FAIL:
       return {

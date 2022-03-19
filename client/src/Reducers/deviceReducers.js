@@ -29,6 +29,7 @@ export const deviceList = (state = { devices: [] }, action) => {
       };
     case deviceConstants.DEVICELIST_ADD_SUCCESS:
       return {
+        devices: state.devices,
         success: true,
       };
     case deviceConstants.DEVICELIST_RESET:
@@ -72,14 +73,33 @@ export const unverifiedDeviceList = (state = { devices: [] }, action) => {
       };
     case deviceConstants.UNVERIFIED_DEVICE_UPDATE:
       const item = action.payload;
+      const orgDevices = state.devices;
 
-      const mapData = state.devices.map((device) =>
-        device._id === item._id ? item : device
-      );
+      orgDevices.forEach((el, i, arr) => {
+        if (el._id == item._id) {
+          arr.splice(i, 1);
+        }
+      });
 
       return {
-        devices: mapData,
+        devices: orgDevices,
+        count: orgDevices.length,
       };
+    case deviceConstants.UNVERIFIED_DEVICE_DELETE:
+      const applianceId = action.payload;
+      const unverDevices = state.devices;
+
+      unverDevices.forEach((el, i, arr) => {
+        if (el._id == applianceId) {
+          arr.splice(i, 1);
+        }
+      });
+
+      return {
+        devices: unverDevices,
+        count: unverDevices.length,
+      };
+
     case deviceConstants.UNVERIFIED_DEVICELIST_FETCH_FAIL:
       return {
         error: action.payload,

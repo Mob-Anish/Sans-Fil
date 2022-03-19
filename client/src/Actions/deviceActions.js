@@ -94,11 +94,25 @@ export const getUnverifiedDevices = () => async (dispatch) => {
 // Verify Appliance
 export const verifyAppliance = (applianceId) => async (dispatch) => {
   try {
-    const verifiedUser = await userServices.verifyAppliance(applianceId);
+    const verifiedUser = await deviceServices.verifyAppliance(applianceId);
 
     const { data } = verifiedUser;
 
     dispatch({ type: deviceConstants.UNVERIFIED_DEVICE_UPDATE, payload: data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// Delete Appliance
+export const deleteAppliance = (applianceId) => async (dispatch) => {
+  try {
+    const deleteAppliances = await deviceServices.deleteAppliance(applianceId);
+
+    dispatch({
+      type: deviceConstants.UNVERIFIED_DEVICE_DELETE,
+      payload: applianceId,
+    });
   } catch (err) {
     console.log(err);
   }
