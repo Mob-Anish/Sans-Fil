@@ -35,9 +35,9 @@ if (localStorage.userInfo) {
   //   store.dispatch({ type: userConstants.USER_AUTHORIZE, payload: data });
   // }
 
-  // if (data.user.role === "admin") {
-  //   store.dispatch({ type: userConstants.IS_ADMIN, payload: data });
-  // }
+  if (data.role === "admin") {
+    store.dispatch({ type: userConstants.IS_ADMIN, payload: data });
+  }
 }
 
 function App() {

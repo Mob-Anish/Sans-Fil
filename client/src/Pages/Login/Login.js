@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as routes from "../../Constants/routes";
 import * as userAction from "../../Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import { validation } from "../../Utils/validation";
+import { validation } from "../../Utils/loginValidation";
 
 const styles = {
   login: {
@@ -145,7 +145,7 @@ const Login = ({ classes }) => {
   const userLoginData = useSelector((state) => state.userLogin);
   const userAuthData = useSelector((state) => state.userInfo);
 
-  const { isAuthenticated, isAdmin } = userAuthData;
+  const { isAuthenticated } = userAuthData;
 
   const { error } = userLoginData;
 
@@ -156,9 +156,9 @@ const Login = ({ classes }) => {
     //   return navigate(routes.DASHBOARD);
     // }
 
-    if (isAdmin) {
-      return navigate(routes.ADMIN);
-    }
+    // if (isAdmin) {
+    //   return navigate(routes.ADMIN);
+    // }
 
     if (isAuthenticated) {
       navigate(routes.DASHBOARD);

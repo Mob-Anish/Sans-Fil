@@ -3,7 +3,7 @@ import injectSheet from "react-jss";
 import { MdWidgets } from "react-icons/md";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { AiOutlineUser } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import * as getDate from "../../Utils/date";
 import { useDispatch, useSelector } from "react-redux";
@@ -170,7 +170,7 @@ const Admin = ({ classes }) => {
   const dispatch = useDispatch();
 
   const userData = useSelector((state) => state.userInfo);
-  const { userInfo } = userData;
+  const { userInfo, isAdmin } = userData;
 
   const [dashboard, setDashboard] = useState("true");
   const [users, setUsers] = useState("");
@@ -197,7 +197,7 @@ const Admin = ({ classes }) => {
     setUsers("");
     setUnverifiedDevices("true");
   };
-  return (
+  return isAdmin ? (
     <div className={classes.admin}>
       <div className="content">
         <div className="sidebar">
@@ -260,6 +260,8 @@ const Admin = ({ classes }) => {
         </div>
       </div>
     </div>
+  ) : (
+    <Navigate to={routes.HOME} />
   );
 };
 

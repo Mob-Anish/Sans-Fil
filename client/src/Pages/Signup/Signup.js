@@ -9,6 +9,7 @@ import * as userConstants from "../../Constants/userConstants";
 import * as userAction from "../../Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorMessage from "../../Components/Message/errorMessage";
+import { validation } from "../../Utils/signupValidation";
 
 const styles = {
   signup: {
@@ -25,7 +26,7 @@ const styles = {
       boxShadow:
         "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
       "& .signup-content": {
-        padding: "6rem 0 5rem 25rem",
+        padding: "4.5rem 0 5rem 26rem",
         width: "60%",
         position: "relative",
         "& img": {
@@ -37,7 +38,7 @@ const styles = {
         },
       },
       "& form": {
-        marginTop: "6rem",
+        marginTop: "4.5rem",
         "& .input-field": {
           display: "flex",
           flexDirection: "column",
@@ -53,7 +54,8 @@ const styles = {
           },
         },
         "& label": {
-          fontSize: "2.5rem",
+          fontSize: "2rem",
+          fontWeight: "bold",
         },
         "& input": {
           padding: "10px",
@@ -108,7 +110,7 @@ const styles = {
         fontSize: "4rem",
       },
       "& .logo-image": {
-        marginBottom: "5rem",
+        marginBottom: "3rem",
       },
       "& .image-content": {
         margin: "2rem",
@@ -135,7 +137,9 @@ const styles = {
 const Signup = ({ classes }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
+  const [signupError, setSignupError] = useState("");
 
   const navigate = useNavigate();
 
@@ -157,8 +161,12 @@ const Signup = ({ classes }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const errors = validation(name, email, address, password);
+
+    if (errors) return setSignupError(errors);
+
     // Dispatch action
-    dispatch(userAction.register(name, email, password));
+    dispatch(userAction.register(name, email, address, password));
   };
 
   return (
@@ -188,7 +196,9 @@ const Signup = ({ classes }) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
-                <div className="error-field">{error ? error.name : ""}</div>
+                <div className="error-field">
+                  {signupError ? signupError.name : ""}
+                </div>
               </div>
               <div className="input-field">
                 <label htmlFor="email">Email Address:</label>
@@ -200,7 +210,23 @@ const Signup = ({ classes }) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <div className="error-field">{error ? error.email : ""}</div>
+                <div className="error-field">
+                  {signupError ? signupError.email : ""}
+                </div>
+              </div>
+              <div className="input-field">
+                <label htmlFor="address">Address:</label>
+                <input
+                  type={"text"}
+                  name="address"
+                  className="address"
+                  placeholder="Enter your address . . ."
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                <div className="error-field">
+                  {signupError ? signupError.address : ""}
+                </div>
               </div>
               <div className="input-field">
                 <label htmlFor="password">Password:</label>
@@ -212,7 +238,10 @@ const Signup = ({ classes }) => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <div className="error-field">{error ? error.password : ""}</div>
+                <div className="error-field">
+                  {signupError ? signupError.password : ""}
+                  {error ? error.message : ""}
+                </div>
               </div>
               <div
                 className="submit-field"

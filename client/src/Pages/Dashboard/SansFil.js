@@ -5,7 +5,7 @@ import { BiTime } from "react-icons/bi";
 import { GoLightBulb } from "react-icons/go";
 import { ImPower } from "react-icons/im";
 import { HiOutlineLightBulb } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import "./index.css";
 import noProf from "../../Assets/img/no-prof.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -206,7 +206,7 @@ const Dashboard = ({ classes }) => {
   const { count } = deviceData;
   const userData = useSelector((state) => state.userInfo);
 
-  const { userInfo } = userData;
+  const { userInfo, isAuthenticated } = userData;
 
   useEffect(() => {
     dispatch(deviceAction.getAppliances());
@@ -251,7 +251,9 @@ const Dashboard = ({ classes }) => {
     setPower("true");
   };
 
-  return (
+  return isAuthenticated == false ? (
+    <Navigate to={routes.HOME} />
+  ) : (
     <div className={classes.dashboard}>
       <div className="content">
         <div className="sidebar">

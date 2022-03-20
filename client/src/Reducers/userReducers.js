@@ -2,6 +2,7 @@ import * as userConstants from "../Constants/userConstants";
 
 const initialState = {
   isAuthenticated: false,
+  isAdmin: false,
 };
 
 export const userLogin = (state = initialState, action) => {
@@ -72,6 +73,7 @@ export const userInfo = (state = initialState, action) => {
       return {
         userInfo: action.payload,
         isAdmin: true,
+        isAuthenticated: true,
       };
 
     case userConstants.USER_INFO_RESET:
