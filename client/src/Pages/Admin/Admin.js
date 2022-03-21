@@ -242,7 +242,7 @@ const Admin = ({ classes }) => {
               </div>
               <h1 className="name">{userInfo.name}</h1>
               <div className="prof-dropdown">
-                <h2 style={{ padding: "1.3rem 6rem" }} onClick={logout}>
+                <h2 style={{ padding: "1.3rem 3rem" }} onClick={logout}>
                   Logout
                 </h2>
               </div>

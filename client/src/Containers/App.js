@@ -10,6 +10,7 @@ import * as routes from "./../Constants/routes";
 import { logout, setCurrentUser } from "../Actions/userActions";
 import * as userConstants from "../Constants/userConstants";
 import Admin from "../Pages/Admin/Admin";
+import EmailVerification from "../Pages/EmailVerification/emailVerification";
 
 if (localStorage.token) {
   const data = JSON.parse(localStorage.token);
@@ -47,10 +48,14 @@ function App() {
     <Router>
       <Routes>
         <Route path={routes.HOME} element={<Home />} />
-        <Route path={routes.LOGIN} element={<Login />} exact={true} />
-        <Route path={routes.SIGNUP} element={<Signup />} exact={true} />
-        <Route path={routes.DASHBOARD} element={<SansFil />} exact={true} />
+        <Route path={routes.LOGIN} element={<Login />} />
+        <Route path={routes.SIGNUP} element={<Signup />} />
+        <Route path={routes.DASHBOARD} element={<SansFil />}/>
         <Route path={routes.ADMIN} element={<Admin />} />
+        <Route
+          path={routes.EMAIL_VERIFICATION}
+          element={<EmailVerification />}
+        />
       </Routes>
     </Router>
   );

@@ -5,19 +5,45 @@ import * as userServices from "../Services/user";
 import { handleError } from "../Utils/error";
 
 // Register action
-export const register = (name, email, password) => async (dispatch) => {
+export const register =
+  (name, email, address, password) => async (dispatch) => {
+    try {
+      dispatch({ type: userConstants.USER_REGISTER_START });
+
+      const body = {
+        name,
+        email,
+        address,
+        password,
+      };
+
+      const { message } = await userServices.registerUser(body);
+
+      const { data } = message;
+
+      // Success
+      dispatch({
+        type: userConstants.USER_REGISTER_SUCCESS,
+        payload: data,
+      });
+    } catch (err) {
+      dispatch({
+        type: userConstants.USER_REGISTER_FAIL,
+        payload: handleError(err),
+      });
+    }
+  };
+
+export const emailVerification = (verificationCode) => async (dispatch) => {
   try {
-    dispatch({ type: userConstants.USER_REGISTER_START });
+    dispatch({ type: userConstants.USER_AUTH_START });
 
-    const body = {
-      name,
-      email,
-      password,
-    };
+    const otp = { verificationCode };
 
-    const message = await userServices.registerUser(body);
+    const message = await userServices.verifyEmail(otp);
 
-    const { token, data } = message;
+    const { data } = message;
+    const { token } = data;
 
     // Set token in localstorage
     tokenSystem.setToken(token);
@@ -30,12 +56,13 @@ export const register = (name, email, password) => async (dispatch) => {
 
     // Success
     dispatch({
-      type: userConstants.USER_REGISTER_SUCCESS,
-      payload: message,
+      type: userConstants.USER_AUTH_SUCCESS,
+      payload: data,
     });
   } catch (err) {
+    console.log(err);
     dispatch({
-      type: userConstants.USER_REGISTER_FAIL,
+      type: userConstants.USER_AUTH_FAIL,
       payload: handleError(err),
     });
   }

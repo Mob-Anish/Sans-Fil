@@ -39,7 +39,7 @@ export const userRegister = (state = initialState, action) => {
       };
     case userConstants.USER_REGISTER_SUCCESS:
       return {
-        message: action.payload,
+        userData: action.payload,
         success: true,
         isAuthenticated: true,
       };

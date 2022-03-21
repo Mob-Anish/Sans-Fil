@@ -4,7 +4,8 @@ const config = {
   apiEndPoint: {
     user: {
       login: "/auth/login",
-      create: "/signup",
+      create: "/auth/register",
+      verifyEmail: '/auth/verify-email',
       getUnverfiedUser: "/user/unverified-users",
       grantArduinoToken: "/user/verify-user",
     },

@@ -1,0 +1,73 @@
+.email--verify__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.email--verify__container .content-holder {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  width: 50%;
+  padding: 5rem 10rem;
+  border-radius: 1rem;
+  border: 3px solid blue;
+}
+
+.email--verify__container .content-holder h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.email--verify__container .content-holder .info-tag {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.email--verify__container .content-holder form {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.email--verify__container .content-holder form input {
+  font-family: QuickSand;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: grey;
+  color: white;
+  width: 27rem;
+  font-size: 1.8rem;
+}
+
+.email--verify__container .content-holder form input:focus {
+  outline: none;
+}
+
+.email--verify__container .content-holder form input::placeholder {
+  color: #ffffff;
+  font-size: 1.8rem;
+}
+
+.email--verify__container .content-holder form button {
+  cursor: pointer;
+  border: none;
+  background: purple;
+  border-radius: 3rem;
+  padding: 1rem 3rem;
+  color: #ffffff;
+  font-size: 1.8rem;
+  transition: transform 0.3s ease-out;
+}
+
+.email--verify__container .content-holder form .error-field {
+  color: red;
+  font-size: 1.5rem;
+  height: 1.5rem;
+}
+
+.email--verify__container .content-holder .info-tag-warning {
+    margin-top: 3rem;
+}

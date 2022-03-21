@@ -43,27 +43,7 @@ const product = () => {
               <button onClick={loginToBuy}>Login to buy</button>
             )} */}
           </div>
-        </div>
-        <div className="card card2" style={{ marginLeft: "10rem" }}>
-          <div className="img-holder">
-            <div className="bg-image"></div>
-          </div>
-          <div className="description">
-            <h1>About</h1>
-            <p style={{ fontSize: "2rem" }}>
-              {" "}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat
-            </p>
-            {/* {isAuthenticated ? (
-              <button onClick={buyProduct}>Buy</button>
-            ) : (
-              <button onClick={loginToBuy}>Login to buy</button>
-            )} */}
-          </div>
-        </div>
+        </div>  
       </div>
     </div>
   );

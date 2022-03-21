@@ -15,18 +15,18 @@ const Home = () => {
 
   const { isAuthenticated } = userAuthData;
 
-  useEffect(() => {
-    // if (isAuthorized) {
-    //   navigate(routes.DASHBOARD);
-    // }
+  // useEffect(() => {
+  //   // if (isAuthorized) {
+  //   //   navigate(routes.DASHBOARD);
+  //   // }
 
-    // if (isAdmin) {
-    //   navigate(routes.ADMIN);
-    // }
-    if (isAuthenticated) {
-      navigate(routes.DASHBOARD);
-    }
-  });
+  //   // if (isAdmin) {
+  //   //   navigate(routes.ADMIN);
+  //   // }
+  //   // if (isAuthenticated) {
+  //   //   navigate(routes.DASHBOARD);
+  //   // }
+  // });
 
   return (
     <div className="sansfil--home">

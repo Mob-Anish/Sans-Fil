@@ -17,6 +17,14 @@ export const loginUser = async (body) => {
   return data;
 };
 
+export const verifyEmail = async (body) => {
+  const { data } = await http.post(config.apiEndPoint.user.verifyEmail, {
+    body,
+  });
+
+  return data;
+};
+
 export const getUnverifiedUsers = async (body) => {
   const { data } = await http.get(config.apiEndPoint.user.getUnverfiedUser, {
     body,

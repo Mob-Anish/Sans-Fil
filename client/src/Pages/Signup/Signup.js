@@ -145,21 +145,21 @@ const Signup = ({ classes }) => {
 
   const userRegisterData = useSelector((state) => state.userRegister);
 
-  const { error, isAuthenticated } = userRegisterData;
+  const { error, success } = userRegisterData;
 
   const dispatch = useDispatch();
 
   // Redirect after successful signup
   useEffect(() => {
-    if (isAuthenticated) {
-      setTimeout(() => {
-        navigate(routes.HOME);
-      }, 2500);
+    if (success) {
+      navigate(routes.EMAIL_VERIFICATION);
     }
-  }, [isAuthenticated]);
+  }, [success]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log(address);
 
     const errors = validation(name, email, address, password);
 
