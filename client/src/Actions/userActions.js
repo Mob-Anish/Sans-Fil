@@ -17,9 +17,11 @@ export const register =
         password,
       };
 
-      const { message } = await userServices.registerUser(body);
+      const message = await userServices.registerUser(body);
 
       const { data } = message;
+
+      console.log(message);
 
       // Success
       dispatch({

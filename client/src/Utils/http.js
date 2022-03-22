@@ -34,6 +34,8 @@ const post = (
 ) => {
   const authHeaders = {};
 
+  console.log(body);
+
   if (accessToken) {
     authHeaders["Authorization"] = `Bearer ${tokenService.getAccessToken()}`;
   }
@@ -46,6 +48,43 @@ const post = (
     headers: { ...authHeaders, ...headers },
   }).then((response) => response);
 };
+
+// const schedule = (url, { params = {}, body = {}, headers = {} } = {}) => {
+//   const authHeaders = {};
+//   console.log(url);
+
+//   // if (accessToken) {
+//   //   authHeaders["Authorization"] = `Bearer ${tokenService.getAccessToken()}`;
+//   // }
+
+//   console.log(body);
+
+//   return instanceSchedule({
+//     url,
+//     params,
+//     data: body,
+//     method: "POST",
+//     headers: { ...authHeaders, ...headers },
+//   }).then((response) => response);
+
+//   // const data = fetch(
+//   //   "https://acsolutionmep.com/project/details_insert.php",
+//   //   {
+//   //     method: "POST",
+//   //     headers: {
+//   //       "Content-Type": "application/json",
+//   //       "Access-Control-Allow-Origin": "*",
+//   //     },
+//   //   },
+//   //   {   
+//   //     body: JSON.stringify(body),
+//   //   }
+//   // ).then((response) => response.json());
+
+//   // console.log(data);
+
+//   // return data;
+// };
 
 const patch = (
   url,

@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./appliance.css";
 import Switch from "@material-ui/core/Switch";
-import { useState } from "react";
 import * as deviceAction from "../../Actions/deviceActions";
 // import { useEffect } from "react";
 

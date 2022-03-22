@@ -10,6 +10,7 @@ import {
   deviceList,
   applianceLog,
   unverifiedDeviceList,
+  scheduleLog,
 } from "./Reducers/deviceReducers";
 
 const initialState = {};
@@ -19,9 +20,10 @@ const rootReducer = combineReducers({
   userLogin,
   userInfo,
   deviceList,
+  applianceLog,
+  scheduleLog,
   unverifiedDeviceList,
   unverifiedUserList,
-  applianceLog,
 });
 
 // For redux dev tools

@@ -59,6 +59,26 @@ export const applianceLog = (state = { logs: [] }, action) => {
   }
 };
 
+export const scheduleLog = (state = { logs: [] }, action) => {
+  switch (action.type) {
+    case deviceConstants.APPLIANCE_SCHEDULE_LOGS_START:
+      return {
+        loading: true,
+      };
+    case deviceConstants.APPLIANCE_SCHEDULE_LOGS_SUCCESS:
+      return {
+        scheduleLog: action.payload,
+        success: true,
+      };
+    case deviceConstants.APPLIANCE_SCHEDULE_LOGS_FAIL:
+      return {
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
 export const unverifiedDeviceList = (state = { devices: [] }, action) => {
   switch (action.type) {
     case deviceConstants.UNVERIFIED_DEVICELIST_FETCH_START:

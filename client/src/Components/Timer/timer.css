@@ -1,3 +1,53 @@
 .timer--container {
   padding: 3.5rem 2.5rem;
 }
+
+.timer--container .css-1s2u09g-control {
+  width: 27rem;
+  font-size: 1.5rem;
+}
+
+.timer--container .css-1pahdxg-control {
+  width: 27rem;
+  font-size: 1.5rem;
+}
+
+.timer--container .css-2613qy-menu,
+.timer--container #react-select-3-listbox,
+.timer--container #react-select-5-listbox {
+  font-size: 1.5rem;
+  width: 27rem;
+}
+
+.timer--container form {
+  padding: 2rem;
+}
+
+.timer--container form button {
+  border: none;
+  background: purple;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  margin-top: 1rem;
+  transition: transform 0.3s ease-out;
+}
+
+.timer--container .input-field {
+  display: flex;
+  flex-direction: column;
+  width: 27rem;
+}
+
+.timer--container input {
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  border: none;
+  margin-top: 1rem;
+  font-family: "QuickSand";
+  font-size: 1.5rem;
+}
+
+.timer--container input:focus {
+  outline: none;
+}

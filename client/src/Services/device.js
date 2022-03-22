@@ -74,3 +74,12 @@ export const deleteAppliance = async (applianceId) => {
 
   return data;
 };
+
+export const scheduleAppliance = async (body) => {
+  const { data } = await http.post(
+    config.apiEndPoint.schedule.scheduleAppliance,
+    { body, accessToken: true }
+  );
+
+  return data;
+};

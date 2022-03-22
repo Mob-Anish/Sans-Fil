@@ -42,7 +42,7 @@ if (localStorage.userInfo) {
 }
 
 function App() {
-  //console.log(process.env);
+  console.log(process.env);
 
   return (
     <Router>

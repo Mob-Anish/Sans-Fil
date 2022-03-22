@@ -1,6 +1,8 @@
 import * as deviceServices from "../Services/device";
 import * as deviceConstants from "../Constants/deviceConstants";
 
+const date = new Date();
+
 export const getAppliances = () => async (dispatch) => {
   try {
     dispatch({ type: deviceConstants.DEVICELIST_FETCH_START });
@@ -72,6 +74,44 @@ export const getApplianceLogs = (year, month) => async (dispatch) => {
     dispatch({ type: deviceConstants.DEVICE_APPLIANCE_LOGS_FAIL });
   }
 };
+
+// Schedule Appliance
+export const scheduleAppliance =
+  (pin, isOn, alram_time, repeat) => async (dispatch) => {
+    try {
+      let is_on = "";
+
+      isOn == true ? (is_on = "1") : (is_on = "0");
+
+      const user = JSON.parse(localStorage.userInfo);
+
+      const _id = user.id;
+
+      dispatch({ type: deviceConstants.APPLIANCE_SCHEDULE_LOGS_START });
+
+      const body = {
+        _id,
+        pin,
+        is_on,
+        alram_time,
+        repeat,
+      };
+
+      const scheduleLog = await deviceServices.scheduleAppliance(body);
+
+      const { data } = scheduleLog;
+
+      console.log(scheduleLog);
+
+      dispatch({
+        type: deviceConstants.APPLIANCE_SCHEDULE_LOGS_SUCCESS,
+        payload: data,
+      });
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: deviceConstants.APPLIANCE_SCHEDULE_LOGS_FAIL });
+    }
+  };
 
 export const getUnverifiedDevices = () => async (dispatch) => {
   try {
