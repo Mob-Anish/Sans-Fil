@@ -3,7 +3,7 @@
   backdrop-filter: blur(10px);
 }
 
-.collapsed .sidebar .title h1 {
+.collapsed .sidebar .title img {
   display: none;
 }
 

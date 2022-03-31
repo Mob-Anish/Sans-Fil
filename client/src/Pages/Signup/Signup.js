@@ -29,7 +29,7 @@ const styles = {
         padding: "4.5rem 0 5rem 26rem",
         width: "60%",
         position: "relative",
-        "& img": {
+        "& .img": {
           top: "6.2rem",
           left: "7rem",
           position: "absolute",
@@ -74,7 +74,7 @@ const styles = {
           color: "#ffffff",
           cursor: "pointer",
           border: "none",
-          background: "purple",
+          background: "#17c317",
           padding: "1.5rem 2.5rem",
           fontSize: "2.2rem",
           textTransform: "uppercase",
@@ -116,7 +116,7 @@ const styles = {
         margin: "2rem",
         width: "40%",
         borderRadius: "4rem",
-        background: "red",
+        background: "#82ccdd",
         "& .img-holder": {
           height: "60rem",
           width: "60rem",
@@ -176,9 +176,13 @@ const Signup = ({ classes }) => {
       ) : (
         <div className="content-holder">
           <div className="signup-content">
-            <img src={bulb} alt="bulb img" />
+            <img src={bulb} alt="bulb img" className="img" />
             <div className="logo-image">
-              <h1>Sans Fil</h1>
+              <img
+                src="https://res.cloudinary.com/hologram/image/upload/v1648736951/bpzlatenj5xveytrccli.png"
+                className="img-holder"
+                style={{ width: "16rem" }}
+              />
             </div>
             <div className="title">
               <span>Welcome to</span>
@@ -257,7 +261,7 @@ const Signup = ({ classes }) => {
                   <Link to="/login" style={{ textDecoration: "none" }}>
                     <b
                       style={{
-                        color: "red",
+                        color: "#17c317",
                         cursor: "pointer",
                       }}
                     >

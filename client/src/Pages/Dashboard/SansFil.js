@@ -69,7 +69,8 @@ const styles = {
                 borderBottomRightRadius: "3rem",
                 marginBottom: "1.5rem",
                 "&.active": {
-                  background: "red",
+                  background: "#17C37B",
+                  color: "white",
                   "& svg": {
                     color: "#ffffff",
                   },
@@ -79,7 +80,8 @@ const styles = {
                   paddingLeft: "3.5rem",
                 },
                 "&:hover": {
-                  background: "red",
+                  background: "#17C37B",
+                  color: "white",
                   "& svg": {
                     color: "#ffffff",
                   },
@@ -131,7 +133,8 @@ const styles = {
                 borderRadius: "1rem",
               },
               "& h2:hover": {
-                background: "red",
+                background: "#17C37B",
+                color: "white",
               },
             },
             "& .img-holder": {
@@ -259,7 +262,11 @@ const Dashboard = ({ classes }) => {
         <div className="sidebar">
           <div className="content-holder">
             <div className="title">
-              <h1>Sans Fil</h1>
+              <img
+                src="https://res.cloudinary.com/hologram/image/upload/v1648736951/bpzlatenj5xveytrccli.png"
+                className="img-holder"
+                style={{ width: "16rem" }}
+              />
               <MdWidgets className="active" onClick={mergeSideBar} />
             </div>
             <div className="menu-bar">
@@ -306,9 +313,7 @@ const Dashboard = ({ classes }) => {
               <h2 className="date" style={{ color: "#D158C5" }}>
                 {`${getDate.getDay()} ${getDate.getMonth} ${getDate.getYear}`}
               </h2>
-              <h1 className="respect">
-                Welcome {userInfo.name} to the smart home 😎😎
-              </h1>
+              <h1 className="respect">Welcome {userInfo.name} 🙏🙏</h1>
             </div>
             <div className="profile-holder">
               <div className="img-holder">

@@ -6,7 +6,7 @@
 
 .sansfil--home .about .border-bottom {
   width: 15rem;
-  background: red;
+  background: #17c317;
   height: 5px;
   display: block;
   position: absolute;
@@ -24,15 +24,16 @@
 
 .sansfil--home .about .description .img-holder {
   height: 55rem;
-  width: 55rem;
+  width: 75rem;
 }
 
 .sansfil--home .about .description .content {
   width: 50%;
+  padding-left: 4rem;
 }
 
 .sansfil--home .about .description .bg-image {
-  background: url(../../Assets/img/About.jpg);
+  background: url(../../Assets/img/about-us.png);
   height: 100%;
   width: 100%;
   background-size: cover;

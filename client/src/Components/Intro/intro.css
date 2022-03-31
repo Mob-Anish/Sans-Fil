@@ -18,10 +18,6 @@ a {
   color: black;
 }
 
-.header .logo h1 {
-  font-size: 3rem;
-}
-
 .header .navbar ul {
   display: flex;
   align-items: center;
@@ -36,7 +32,7 @@ a {
 
 .header .navbar ul .login a {
   padding: 1rem 2rem;
-  background-color: red;
+  background-color: #17c317;
   color: white;
   border-radius: 2.5rem;
   font-size: 1.8rem;
@@ -75,7 +71,8 @@ a {
 }
 
 .header .navbar ul .auth-user .prof-dropdown h2:hover {
-  background: red;
+  background: #17c317;
+  color: white;
 }
 
 .header .navbar ul .auth-user .img-holder .bg-image {
@@ -103,7 +100,7 @@ a {
   border: none;
   margin-top: 2rem;
   padding: 1rem 2rem;
-  background-color: red;
+  background-color: #17c317;
   color: white !important;
   border-radius: 2rem;
   font-size: 1.8rem;
@@ -115,12 +112,12 @@ a {
   color: white;
 }
 
-.intro .img-holder {
+.intro .main .img-holder {
   height: 70rem;
   width: 85rem;
 }
 
-.intro .img-holder .bg-image {
+.intro .main .img-holder .bg-image {
   background: url(../../Assets/img/image1.png);
   height: 100%;
   width: 100%;

@@ -9,7 +9,7 @@
 
 .devices--container .card-body .card {
   border-radius: 1rem;
-  background: blue;
+  background: white;
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -42,7 +42,6 @@
   margin-left: 1rem;
   font-size: 1rem;
   font-weight: bold;
-  color: white;
 }
 
 .devices--container .card-body .card .button .accept,
@@ -65,5 +64,5 @@
 }
 
 .devices--container .card-body .card .button .reject {
-  background: rgb(214, 30, 30);
+  background: red;
 }

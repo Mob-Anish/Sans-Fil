@@ -63,7 +63,7 @@ const timer = () => {
           <input
             type={"text"}
             className="date"
-            placeholder="Enter your time in xx:xx AM/PM"
+            placeholder="Enter your time"
             value={scheduleTime}
             onChange={(e) => setScheduleTime(e.target.value)}
           />

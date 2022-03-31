@@ -9,7 +9,8 @@
 
 .users--container .card-body .card {
   border-radius: 1rem;
-  background: red;
+  background: white;
+  color: black;
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -45,13 +46,13 @@
   margin-left: 1rem;
   font-size: 1rem;
   font-weight: bold;
-  color: white;
 }
 
 .users--container .card-body .card .button {
   padding: 1rem;
-  background: white;
+  background: #17c317;
   border-radius: 3rem;
+  color: white;
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;

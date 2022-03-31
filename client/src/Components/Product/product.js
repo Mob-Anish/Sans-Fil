@@ -32,10 +32,9 @@ const product = () => {
           <div className="description">
             <h1>About</h1>
             <p style={{ fontSize: "2rem" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat
+              It is an wireless system that can be connected through SansFil web
+              and mobile application. It can connect the wide range of
+              appliances.
             </p>
             {/* {isAuthenticated ? (
               <button onClick={buyProduct}>Buy</button>
@@ -43,7 +42,7 @@ const product = () => {
               <button onClick={loginToBuy}>Login to buy</button>
             )} */}
           </div>
-        </div>  
+        </div>
       </div>
     </div>
   );

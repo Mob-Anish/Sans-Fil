@@ -63,7 +63,8 @@ const styles = {
                 borderBottomRightRadius: "3rem",
                 marginBottom: "1.5rem",
                 "&.active": {
-                  background: "red",
+                  background: "#4834d4",
+                  color: "#ffffff",
                   "& svg": {
                     color: "#ffffff",
                   },
@@ -73,7 +74,8 @@ const styles = {
                   paddingLeft: "3.5rem",
                 },
                 "&:hover": {
-                  background: "red",
+                  background: "#4834d4",
+                  color: "#ffffff",
                   "& svg": {
                     color: "#ffffff",
                   },
@@ -125,7 +127,8 @@ const styles = {
                 borderRadius: "1rem",
               },
               "& h2:hover": {
-                background: "red",
+                background: "#17c317",
+                color: "white",
               },
             },
             "& .img-holder": {
@@ -203,7 +206,11 @@ const Admin = ({ classes }) => {
         <div className="sidebar">
           <div className="content-holder">
             <div className="title">
-              <h1>Sans Fil</h1>
+              <img
+                src="https://res.cloudinary.com/hologram/image/upload/v1648736951/bpzlatenj5xveytrccli.png"
+                className="img-holder"
+                style={{ width: "16rem" }}
+              />
               <MdWidgets className="active" onClick={mergeSideBar} />
             </div>
             <div className="menu-bar">

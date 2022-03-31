@@ -23,7 +23,11 @@ const Intro = () => {
     <div className="intro">
       <div className="header">
         <div className="logo">
-          <h1>SansFil</h1>
+          <img
+            src="https://res.cloudinary.com/hologram/image/upload/v1648736951/bpzlatenj5xveytrccli.png"
+            className="img-holder"
+            style={{ width: "16rem" }}
+          />
         </div>
         <div className="navbar">
           <ul>
@@ -79,6 +83,19 @@ const Intro = () => {
           <button>
             <a href="#Products">Products</a>
           </button>
+          <ul
+            style={{
+              fontSize: "1.8rem",
+              margin: "3rem 0 0 3rem",
+              fontWeight: "bold",
+            }}
+          >
+            <li style={{ marginBottom: "1rem" }}>Control the appliances</li>
+            <li style={{ marginBottom: "1rem" }}>
+              View the monthly power consumption
+            </li>
+            <li>Schedule the appliances</li>
+          </ul>
         </div>
         <div className="img-holder">
           <div className="bg-image"></div>
