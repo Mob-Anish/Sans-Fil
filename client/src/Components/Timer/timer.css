@@ -19,8 +19,18 @@
   width: 27rem;
 }
 
+.timer--container .error-field{
+  font-size: 1.5rem;
+  color: red;
+  height: 1.5rem;
+}
+
 .timer--container form {
-  padding: 2rem;
+  padding: 4rem;
+}
+
+.timer--container form h2 {
+  font-size: 1.8rem;
 }
 
 .timer--container form button {
@@ -31,12 +41,17 @@
   border-radius: 2rem;
   margin-top: 1rem;
   transition: transform 0.3s ease-out;
+  font-size: 1.6rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  font-family: Quicksand;
 }
 
 .timer--container .input-field {
   display: flex;
   flex-direction: column;
   width: 27rem;
+  margin-bottom: 2rem;
 }
 
 .timer--container input {

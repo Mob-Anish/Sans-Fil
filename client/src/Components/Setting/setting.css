@@ -12,6 +12,12 @@
   width: 80%;
 }
 
+.setting--container .content-holder .error-field{
+  font-size: 1.5rem;
+  color: red;
+  height: 1.5rem;
+}
+
 .setting--container .content-holder {
   display: flex;
   padding: 4rem;

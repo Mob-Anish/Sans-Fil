@@ -15,14 +15,16 @@
 
 .product-cards .card .img-holder {
   height: 31rem;
-  width: 28rem;
+  width: 31rem;
   margin-bottom: 3rem;
+  border-radius: 50%;
 }
 
 .product-cards .card1 .bg-image {
-  background: url(../../Assets/img/bulb.png);
+  background: url(../../Assets/img/product.jpg);
   height: 100%;
   width: 100%;
+  border-radius: 50%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

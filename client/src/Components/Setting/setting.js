@@ -2,11 +2,13 @@ import "./setting.css";
 import { useState } from "react";
 import * as deviceAction from "../../Actions/deviceActions";
 import { useDispatch, useSelector } from "react-redux";
+import { validation } from "../../Utils/applianceValidation";
 
 const setting = () => {
   const [applianceName, setApplianceName] = useState("");
   const [power, setPower] = useState("");
   const [pin, setPin] = useState("");
+  const [uiError, setUiError] = useState("");
   const [uploadOnImage, setUploadOnImage] = useState("");
   const [uploadOffImage, setUploadOffImage] = useState("");
 
@@ -21,6 +23,16 @@ const setting = () => {
   };
 
   const addAppliance = () => {
+    const errors = validation(
+      applianceName,
+      power,
+      pin,
+      uploadOffImage,
+      uploadOnImage
+    );
+
+    if (errors) return setUiError(errors);
+
     const formData = new FormData();
     formData.append("name", applianceName);
     formData.append("power", power);
@@ -49,7 +61,7 @@ const setting = () => {
               value={applianceName}
               onChange={(e) => setApplianceName(e.target.value)}
             />
-            {/* <div className="error-field">{uiError ? uiError.email : ""}</div> */}
+            <div className="error-field">{uiError ? uiError.name : ""}</div>
           </div>
           <div className="input-field">
             <label htmlFor="power">Power</label>
@@ -61,10 +73,7 @@ const setting = () => {
               value={power}
               onChange={(e) => setPower(e.target.value)}
             />
-            {/* <div className="error-field">
-            {uiError ? uiError.password : ""}
-            {error ? error.message : ""}
-          </div> */}
+            <div className="error-field">{uiError ? uiError.power : ""}</div>
           </div>
           <div className="input-field">
             <label htmlFor="pin">Pin</label>
@@ -76,10 +85,7 @@ const setting = () => {
               value={pin}
               onChange={(e) => setPin(e.target.value)}
             />
-            {/* <div className="error-field">
-            {uiError ? uiError.password : ""}
-            {error ? error.message : ""}
-          </div> */}
+            <div className="error-field">{uiError ? uiError.pin : ""}</div>
           </div>
           <button type="text" className="add-appliance" onClick={addAppliance}>
             Add Appliance
@@ -89,10 +95,16 @@ const setting = () => {
           <div className="image1">
             <h2>Image upload for off state</h2>
             <input type={"file"} onChange={image1Upload} />
+            <div className="error-field">
+              {uiError ? uiError.image1Upload : ""}
+            </div>
           </div>
           <div className="image2">
             <h2>Image upload for on state</h2>
             <input type={"file"} onChange={image2Upload} />
+            <div className="error-field">
+              {uiError ? uiError.image2Upload : ""}
+            </div>
           </div>
         </div>
       </div>
