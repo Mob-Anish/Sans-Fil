@@ -5,7 +5,9 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as deviceAction from "../../Actions/deviceActions";
 import { validation } from "../../Utils/timerValidation";
+import { toast } from "react-toastify";
 
+toast.configure();
 const timer = () => {
   const [checked, setChecked] = useState(false);
   const [repeated, setRepeated] = useState("");
@@ -22,7 +24,11 @@ const timer = () => {
 
   if (devices) {
     devices.forEach((device) => {
-      deviceOptions.push({ value: `${device.pin}`, label: device.name });
+      deviceOptions.push({
+        value: `${device.pin}`,
+        label: device.name,
+        id: device._id,
+      });
     });
   }
 
@@ -55,9 +61,17 @@ const timer = () => {
         appliancePin.value,
         checked,
         scheduleTime,
-        repeated.value
+        repeated.value,
+        appliancePin.id
       )
     );
+
+    toast.success("Timer Added Successfully 🤙", { autoClose: 1000 });
+
+    setAppliancePin("");
+    setRepeated("");
+    setScheduleTime("");
+    setChecked("false");
   };
 
   return (
@@ -67,9 +81,9 @@ const timer = () => {
         <div className="input-field">
           <h2>Time 🕐</h2>
           <input
-            type={"text"}
+            type={"datetime-local"}
             className="date"
-            placeholder="Enter your time"
+            placeholder="Enter your time in YYYY-MM-DD XX:XX:XX"
             value={scheduleTime}
             onChange={(e) => setScheduleTime(e.target.value)}
           />

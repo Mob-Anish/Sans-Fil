@@ -3,20 +3,20 @@
 }
 
 .timer--container .css-1s2u09g-control {
-  width: 27rem;
-  font-size: 1.5rem;
+  width: 35rem;
+  font-size: 1.6rem;
 }
 
 .timer--container .css-1pahdxg-control {
   width: 27rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .timer--container .css-2613qy-menu,
 .timer--container #react-select-3-listbox,
 .timer--container #react-select-5-listbox {
-  font-size: 1.5rem;
-  width: 27rem;
+  font-size: 1.6rem;
+  width: 35rem;
 }
 
 .timer--container .error-field{
@@ -50,7 +50,7 @@
 .timer--container .input-field {
   display: flex;
   flex-direction: column;
-  width: 27rem;
+  width: 35rem;
   margin-bottom: 2rem;
 }
 
@@ -60,7 +60,7 @@
   border: none;
   margin-top: 1rem;
   font-family: "QuickSand";
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .timer--container input:focus {

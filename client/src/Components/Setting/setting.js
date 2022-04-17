@@ -3,6 +3,7 @@ import { useState } from "react";
 import * as deviceAction from "../../Actions/deviceActions";
 import { useDispatch, useSelector } from "react-redux";
 import { validation } from "../../Utils/applianceValidation";
+import { toast } from "react-toastify";
 
 const setting = () => {
   const [applianceName, setApplianceName] = useState("");
@@ -21,6 +22,8 @@ const setting = () => {
   const image2Upload = (e) => {
     setUploadOnImage(e.target.files[0]);
   };
+
+  toast.configure();
 
   const addAppliance = () => {
     const errors = validation(
@@ -43,6 +46,7 @@ const setting = () => {
     setApplianceName("");
     setPower("");
     setPin("");
+    toast.success("Appliance added successfully", { autoClose: 1500 });
   };
 
   return (

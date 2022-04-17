@@ -8,6 +8,7 @@ import * as routes from "../../Constants/routes";
 import * as userAction from "../../Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { validation } from "../../Utils/loginValidation";
+import { toast } from "react-toastify";
 
 const styles = {
   login: {
@@ -135,6 +136,8 @@ const styles = {
   },
 };
 
+toast.configure();
+
 const Login = ({ classes }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -147,7 +150,7 @@ const Login = ({ classes }) => {
 
   const { isAuthenticated } = userAuthData;
 
-  const { error } = userLoginData;
+  const { error, success } = userLoginData;
 
   const dispatch = useDispatch();
 
@@ -159,6 +162,12 @@ const Login = ({ classes }) => {
     // if (isAdmin) {
     //   return navigate(routes.ADMIN);
     // }
+
+    // setTimeout(() => {
+    //   if (success) {
+    //     navigate(routes.DASHBOARD);
+    //   }
+    // }, 1800);
 
     if (isAuthenticated) {
       navigate(routes.DASHBOARD);
@@ -172,6 +181,8 @@ const Login = ({ classes }) => {
     const errors = validation(email, password, setUiError);
 
     if (errors) return setUiError(errors);
+
+    setUiError("");
 
     // Dispatch action
     dispatch(userAction.login(email, password));

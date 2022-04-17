@@ -77,15 +77,13 @@ export const getApplianceLogs = (year, month) => async (dispatch) => {
 
 // Schedule Appliance
 export const scheduleAppliance =
-  (pin, isOn, alram_time, repeat) => async (dispatch) => {
+  (pin, isOn, alram_time, repeat, _id) => async (dispatch) => {
     try {
       let is_on = "";
 
       isOn == true ? (is_on = "1") : (is_on = "0");
 
       const user = JSON.parse(localStorage.userInfo);
-
-      const _id = user.id;
 
       dispatch({ type: deviceConstants.APPLIANCE_SCHEDULE_LOGS_START });
 

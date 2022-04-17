@@ -11,11 +11,12 @@ const appliance = () => {
 
   const { devices } = deviceData;
 
+  console.log(devices);
+
   const handleToggleEvent = (id, isOn) => {
     if (isOn) dispatch(deviceAction.updateAppliance(id, false));
     if (!isOn) dispatch(deviceAction.updateAppliance(id, true));
   };
-
 
   return (
     <div className="appliance--container">
@@ -23,7 +24,7 @@ const appliance = () => {
         <h1>Appliances</h1>
       </div>
       <div className="card-body">
-        {devices &&
+        {devices.length ? (
           devices.map((device) => {
             return (
               <div className="card">
@@ -37,6 +38,9 @@ const appliance = () => {
                     }}
                   ></div>
                 </div>
+                <h1 style={{ textAlign: "center", marginTop: "1rem" }}>
+                  {device.name}
+                </h1>
                 <Switch
                   onChange={() => handleToggleEvent(device._id, device.isOn)}
                   edge="end"
@@ -45,7 +49,20 @@ const appliance = () => {
                 />
               </div>
             );
-          })}
+          })
+        ) : (
+          <h1
+            style={{
+              fontSize: "2.2rem",
+              textAlign: "center",
+              position: "absolute",
+              top: "50%",
+              left: "40%",
+            }}
+          >
+            Oops there are no appliances registered in your account 😅 😅 !!
+          </h1>
+        )}
       </div>
     </div>
   );

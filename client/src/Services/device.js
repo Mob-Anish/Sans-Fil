@@ -81,5 +81,7 @@ export const scheduleAppliance = async (body) => {
     { body, accessToken: true }
   );
 
+  console.log(body);
+
   return data;
 };

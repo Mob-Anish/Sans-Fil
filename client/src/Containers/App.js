@@ -11,6 +11,7 @@ import { logout, setCurrentUser } from "../Actions/userActions";
 import * as userConstants from "../Constants/userConstants";
 import Admin from "../Pages/Admin/Admin";
 import EmailVerification from "../Pages/EmailVerification/emailVerification";
+import "react-toastify/dist/ReactToastify.css";
 
 if (localStorage.token) {
   const data = JSON.parse(localStorage.token);
@@ -50,7 +51,7 @@ function App() {
         <Route path={routes.HOME} element={<Home />} />
         <Route path={routes.LOGIN} element={<Login />} />
         <Route path={routes.SIGNUP} element={<Signup />} />
-        <Route path={routes.DASHBOARD} element={<SansFil />}/>
+        <Route path={routes.DASHBOARD} element={<SansFil />} />
         <Route path={routes.ADMIN} element={<Admin />} />
         <Route
           path={routes.EMAIL_VERIFICATION}
