@@ -2,7 +2,7 @@
 
 ### Overview
 
-- SansFil is a react based web application which is used to provide wireless connection to home appliances, if only connected to the device(arduino).
+- SansFil is a react based web application which is used to provide wireless connection to appliances, if only connected to the device(arduino).
 - It used react for frontend and nodejs for backend development which is created by my friend ([Sajid Ansari](https://github.com/SajidAnTechie)) 👈.
 
 ### Limitation
