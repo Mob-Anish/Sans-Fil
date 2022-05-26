@@ -10,9 +10,9 @@ import * as userAction from "../../Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorMessage from "../../Components/Message/errorMessage";
 import { validation } from "../../Utils/signupValidation";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
-toast.configure();
+// toast.configure();
 
 const styles = {
   signup: {
@@ -155,7 +155,7 @@ const Signup = ({ classes }) => {
   // Redirect after successful signup
   useEffect(() => {
     if (success) {
-      toast.success("Verify your Email Address", { autoClose: 1000 });
+      // toast.success("Verify your Email Address", { autoClose: 1000 });
       setTimeout(() => {
         navigate(routes.EMAIL_VERIFICATION);
       }, 1700);
@@ -165,7 +165,7 @@ const Signup = ({ classes }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(address); 
+    console.log(address);
 
     const errors = validation(name, email, address, password);
 

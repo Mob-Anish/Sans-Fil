@@ -38,6 +38,10 @@ export const updateAppliance = (id, isOn) => async (dispatch) => {
     });
   } catch (err) {
     console.log(err);
+    dispatch({
+      type: deviceConstants.DEVICESTATE_UPDATE_FAIL,
+      payload: err.message,
+    });
   }
 };
 
