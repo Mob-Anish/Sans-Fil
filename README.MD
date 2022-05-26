@@ -34,6 +34,10 @@
 - yarn / npm
 - Code Editor(VS code, vim, etc..)
 
+### Actual Full Device Connection
+
+![277116488_5368944876451392_1515659175092823699_n](https://user-images.githubusercontent.com/75711381/170417738-2f154832-51ff-4bd3-b10c-ac8d20fdc729.jpg)
+
 ### Getting Started 🚩
 
 - To run this project, first of all yarn or npm should already be installed on your device, clone this repository and now install it locally:
