@@ -2,8 +2,9 @@
 
 ### Overview
 
-- SansFil is a react based web application which is used to provide wireless connection to appliances, if only connected to the device(arduino).
-- It used react for frontend and nodejs for backend development which is created by my friend ([Sajid Ansari](https://github.com/SajidAnTechie)) 👈.
+- SansFil is a react based web application which is used to provide wireless connection to appliances, if only connected to the device.
+- It uses react for frontend and nodejs for backend development which is created by my friend ([Sajid Ansari](https://github.com/SajidAnTechie)) 👈.
+- If u want to see the mobile version of this application, check this out 👉([SansFil](https://github.com/SajidAnTechie/IOT_Controller)).
 
 ### Limitation
 
@@ -19,6 +20,12 @@
 - We can add appliances manually but it will be thoroughly check by admin.
 - We can also schedule the appliances inorder to turn on / off the appliances.
 - We can view the monthly power consumption of our appliances.
+
+### Hardware Technology used in this application
+
+- Arduino Uno
+- Ethernet Shield
+- Relay
 
 ### Tools Required
 
