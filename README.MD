@@ -27,7 +27,7 @@
 - yarn / npm
 - Code Editor(VS code, vim, etc..)
 
-### Getting Started
+### Getting Started 🚩
 
 - To run this project, first of all yarn or npm should already be installed on your device, clone this repository and now install it locally:
 
