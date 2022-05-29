@@ -73,3 +73,7 @@ yarn / npm start
 ![10](https://user-images.githubusercontent.com/75711381/170854852-74f5c46a-033a-4abd-8a17-9b73bd582703.PNG)
 
 ![9](https://user-images.githubusercontent.com/75711381/170854869-7f7bc9c0-1d40-4187-9ef1-f13533fda97e.PNG)
+
+- Testing phase output
+
+![276032682_5028514797208246_8963469791276435141_n](https://user-images.githubusercontent.com/75711381/170855140-da5b7779-db9c-43f9-afa1-fb7c8a43535d.jpg)
