@@ -1,12 +1,12 @@
 # Sans Fil 📲
 
-### Overview
+### Overview 📑
 
 - SansFil is a react based web application which is used to provide wireless connection to appliances, if only connected to the device.
 - It uses react for frontend and nodejs for backend development which is created by my friend [Sajid Ansari](https://github.com/SajidAnTechie)👈.
 - If u want to see the mobile version of this application, check this out 👉[SansFil](https://github.com/SajidAnTechie/IOT_Controller).
 
-### Limitation
+### Limitation 😥
 
 - First of all, it wont be practical at the moment as all the devices need to be reconnected which is not ideal.
 - It is not responsive at all mainly developed for web or large screen(1920 - 1080). So if u want to view on your screen zoom out a bit. Thank you 🙏.
@@ -14,20 +14,22 @@
   Email: sajidansari33272@gmail.com 😅
   Password: 12345678
 
-### Features
+### Features 👁️‍🗨️
 
 - If connected to actual device, we can turn on / off the appliances.
 - We can add appliances manually but it will be thoroughly check by admin.
 - We can also schedule the appliances inorder to turn on / off the appliances.
 - We can view the monthly power consumption of our appliances.
+- The admin can accept / reject the appliances if user add the appliances.
+- Every user must have access key(arduino token) to the device which is grant by the admin.
 
-### Hardware Technology used in this application
+### Hardware Technology used in this application 🧰
 
 - Arduino Uno
 - Ethernet Shield
 - Relay
 
-### Tools Required
+### Tools Required 🔑
 
 - nodejs
 - git
@@ -55,3 +57,17 @@ npx create-react-app Your-App-Name
 cd Your-App-Name
 yarn / npm start
 ```
+
+### Some Snapshots 📷
+
+- User side
+
+![1](https://user-images.githubusercontent.com/75711381/170854815-df62f2fe-30df-4612-b7b3-59a08b0ed7d8.PNG)
+
+![4](https://user-images.githubusercontent.com/75711381/170854833-651ff5ad-4249-4be5-92aa-921d13c60d97.PNG)
+
+- Admin Panel
+
+![10](https://user-images.githubusercontent.com/75711381/170854852-74f5c46a-033a-4abd-8a17-9b73bd582703.PNG)
+
+![9](https://user-images.githubusercontent.com/75711381/170854869-7f7bc9c0-1d40-4187-9ef1-f13533fda97e.PNG)
