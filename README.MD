@@ -23,7 +23,7 @@
 - We can also schedule the appliances inorder to turn on / off the appliances.
 - We can view the monthly power consumption of our appliances.
 - The admin can accept / reject the appliances if user add the appliances.
-- Every user must have access key(arduino token) to the device which is grant by the admin.
+- Every user must have access key(arduino token) to the device inorder to control the appliance which is grant by the admin.
 
 ### Hardware Technology used in this application 🧰
 
@@ -33,7 +33,7 @@
 
 ### Tools Required 🔑
 
-- nodejs
+- Nodejs
 - git
 - yarn / npm
 - Code Editor(VS code, vim, etc..)
