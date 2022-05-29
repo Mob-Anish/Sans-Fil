@@ -68,6 +68,8 @@ yarn / npm start
 
 ![4](https://user-images.githubusercontent.com/75711381/170854833-651ff5ad-4249-4be5-92aa-921d13c60d97.PNG)
 
+![5](https://user-images.githubusercontent.com/75711381/170855433-8496f98f-0039-4927-846b-bace5f564093.PNG)
+
 - Admin Panel
 
 ![10](https://user-images.githubusercontent.com/75711381/170854852-74f5c46a-033a-4abd-8a17-9b73bd582703.PNG)
