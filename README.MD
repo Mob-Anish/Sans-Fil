@@ -13,9 +13,6 @@
 
 - First of all, it wont be practical at the moment as all the devices need to be reconnected which is not ideal.
 - It is not responsive at all mainly developed for web or large screen(1920 - 1080). So if u want to view on your screen zoom out a bit. Thank you 🙏.
-- There may be some problem with email OTP(few email request) on your sign up, So i can provide initial login credentials.
-  Email: sajidansari33272@gmail.com 😅
-  Password: 12345678
 
 ### Features 👁️‍🗨️
 
