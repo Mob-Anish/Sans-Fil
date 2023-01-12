@@ -9,6 +9,10 @@
 - If u want to see the mobile version of this application, check this out 👉[SansFil](https://github.com/SajidAnTechie/IOT_Controller).
 - You can see the application live by clicking this 👉 [SansFil](https://sansfil.herokuapp.com/).
 
+### Shootout 📢
+
+- Myself, Sajid Ansari and Pappu Mishra are responsible for the entire application.
+
 ### Notification 👩‍🚒
 
 - Dont register in the application for now 🙏.
