@@ -9,6 +9,12 @@
 - If u want to see the mobile version of this application, check this out 👉[SansFil](https://github.com/SajidAnTechie/IOT_Controller).
 - You can see the application live by clicking this 👉 [SansFil](https://sansfil.herokuapp.com/).
 
+### Notification 👩‍🚒
+
+- Due to privacy the application cannot be applicable to all users for now so for better view , Please login with the following credentials:
+- Email: sajidansari33272@gmail.com
+  Password: 12345678
+
 ### Limitation 😥
 
 - First of all, it wont be practical at the moment as all the devices need to be reconnected which is not ideal.
