@@ -1,5 +1,3 @@
-
-
 import injectSheet from "react-jss";
 import { MdWidgets } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
@@ -7,7 +5,7 @@ import { BiTime } from "react-icons/bi";
 import { GoLightBulb } from "react-icons/go";
 import { ImPower } from "react-icons/im";
 import { HiOutlineLightBulb } from "react-icons/hi";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import "./index.css";
 import noProf from "../../Assets/img/no-prof.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -264,11 +262,13 @@ const Dashboard = ({ classes }) => {
         <div className="sidebar">
           <div className="content-holder">
             <div className="title">
-              <img
-                src="https://res.cloudinary.com/hologram/image/upload/v1648736951/bpzlatenj5xveytrccli.png"
-                className="img-holder"
-                style={{ width: "16rem" }}
-              />
+              <Link to={routes.HOME}>
+                <img
+                  src="https://res.cloudinary.com/hologram/image/upload/v1648736951/bpzlatenj5xveytrccli.png"
+                  className="img-holder"
+                  style={{ width: "16rem" }}
+                />
+              </Link>
               <MdWidgets className="active" onClick={mergeSideBar} />
             </div>
             <div className="menu-bar">

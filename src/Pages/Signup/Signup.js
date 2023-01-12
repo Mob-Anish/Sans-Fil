@@ -187,11 +187,13 @@ const Signup = ({ classes }) => {
           <div className="signup-content">
             <img src={bulb} alt="bulb img" className="img" />
             <div className="logo-image">
-              <img
-                src="https://res.cloudinary.com/hologram/image/upload/v1648736951/bpzlatenj5xveytrccli.png"
-                className="img-holder"
-                style={{ width: "16rem" }}
-              />
+              <Link to={routes.HOME}>
+                <img
+                  src="https://res.cloudinary.com/hologram/image/upload/v1648736951/bpzlatenj5xveytrccli.png"
+                  className="img-holder"
+                  style={{ width: "16rem" }}
+                />
+              </Link>
             </div>
             <div className="title">
               <span>Welcome to</span>

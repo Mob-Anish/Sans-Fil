@@ -27,7 +27,11 @@ const rootReducer = combineReducers({
 });
 
 // For redux dev tools
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers =
+  (process.env.REACT_APP_ENV !== "production" &&
+    typeof window !== "undefined" &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
 
 const store = createStore(
   rootReducer,
