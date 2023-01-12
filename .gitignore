@@ -9,7 +9,6 @@ coverage
 build
 
 # misc
-src/Config
 .DS_Store
 .env.local
 .env.development.local
