@@ -129,6 +129,9 @@ const styles = {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
+            "@media (max-width: 1680px)": {
+              width: "86%",
+            },
           },
         },
       },
