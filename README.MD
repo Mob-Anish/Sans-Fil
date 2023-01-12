@@ -11,6 +11,7 @@
 
 ### Notification 👩‍🚒
 
+- Dont register in the application for now 🙏.
 - Due to privacy the application cannot be applicable to all users for now so for better view , Please login with the following credentials:
 - Email: sajidansari33272@gmail.com
   Password: 12345678
